@@ -19,7 +19,7 @@ public class WebsiteModelUtil {
 	public Resource r;
 
 	// FIXME: DO NOT HARD-CODE THIS!
-	private final String PATH = "/Users/cwp/Desktop/ws2.website";
+	private final String PATH = "/Users/Jingjing/Desktop/ws2.website";
 	
 	public static WebsiteModelUtil INSTANCE = new WebsiteModelUtil();
 	

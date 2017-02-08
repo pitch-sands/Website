@@ -9,6 +9,15 @@
             type="website">
       </diagramType>
    </extension>
+   
+   <extension
+      point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+         	class="de.tu_bs.cs.isf.mbse.website.graphiti.features.MyImageProvider"
+         	id="de.tu_bs.cs.isf.mbse.website.graphiti.features.MyImageProvider">
+   		</imageProvider>
+	</extension>
+   
    <extension
          point="org.eclipse.graphiti.ui.diagramTypeProviders">
       <diagramTypeProvider
@@ -19,6 +28,9 @@
          <diagramType
                id="de.tu_bs.cs.isf.mbse.website.graphiti.diagram">
          </diagramType>
+         <imageProvider
+            id="de.tu_bs.cs.isf.mbse.website.graphiti.features.MyImageProvider">
+      	 </imageProvider>
       </diagramTypeProvider>
    </extension>
 

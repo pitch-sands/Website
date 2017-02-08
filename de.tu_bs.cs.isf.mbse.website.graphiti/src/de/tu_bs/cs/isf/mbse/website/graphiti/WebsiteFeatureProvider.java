@@ -7,23 +7,30 @@ import org.eclipse.graphiti.features.ICreateFeature;
 import org.eclipse.graphiti.features.IDirectEditingFeature;
 import org.eclipse.graphiti.features.IUpdateFeature;
 import org.eclipse.graphiti.features.context.IAddContext;
-
+import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.IDirectEditingContext;
 import org.eclipse.graphiti.features.context.IUpdateContext;
+import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
 
+import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyRenameEClassFeature;
 import de.tu_bs.cs.isf.mbse.website.ButtonBox;
+import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.SearchBox;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddButtonBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddImageBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddSearchBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddTextBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateButtonBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateImageBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateSearchBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateTextBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.directediting.DirectEditingTextBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateImageBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateTextBoxFeature;
 
 public class WebsiteFeatureProvider extends DefaultFeatureProvider {
@@ -43,6 +50,9 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		else if (context.getNewObject() instanceof ButtonBox) {
 			return new AddButtonBoxFeature(this);
 		}
+		else if (context.getNewObject() instanceof ImageBox) {
+			return new AddImageBoxFeature(this);
+		}
 		return super.getAddFeature(context);
 	}
 
@@ -51,7 +61,8 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		
 		return new ICreateFeature[] { new CreateTextBoxFeature(this),
 				new CreateSearchBoxFeature(this),
-				new CreateButtonBoxFeature(this)};
+				new CreateButtonBoxFeature(this),
+				new CreateImageBoxFeature(this)};
 		
 	}
 	
@@ -79,8 +90,17 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 	       if (bo instanceof TextBox) {
 	           return new UpdateTextBoxFeature(this);
 	       }
+	       if (bo instanceof ImageBox) {
+	           return new UpdateImageBoxFeature(this);
+	       }
 	   }
 	   return super.getUpdateFeature(context);
+	}
+	
+	@Override
+	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
+	    return new ICustomFeature[] { new MyRenameEClassFeature(this),
+	    							  new MyOpenFileFeature(this)};
 	}
 
 }
