@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.tu_bs.cs.isf.mbse.website/src-gen" editDirectory="/de.tu_bs.cs.isf.mbse.website.edit/src-gen"
+    editorDirectory="/de.tu_bs.cs.isf.mbse.website.editor/src-gen" modelPluginID="de.tu_bs.cs.isf.mbse.website"
+    modelName="Website" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="/de.tu_bs.cs.isf.mbse.website.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>Website.ecore</foreignModel>
+  <genPackages prefix="Website" basePackage="de.tu_bs.cs.isf.mbse" disposableProviderFactory="true"
+      ecorePackage="Website.ecore#/">
+    <genClasses ecoreClass="Website.ecore#//Website">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Website/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Website.ecore#//Website/buttons"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Website.ecore#//Website/texts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Website.ecore#//Website/images"/>
+    </genClasses>
+    <genClasses ecoreClass="Website.ecore#//Widget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Widget/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Widget/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Widget/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Widget/height"/>
+    </genClasses>
+    <genClasses ecoreClass="Website.ecore#//Text">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Text/content"/>
+    </genClasses>
+    <genClasses ecoreClass="Website.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Image/source"/>
+    </genClasses>
+    <genClasses ecoreClass="Website.ecore#//Button">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Button/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Website.ecore#//Button/link"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

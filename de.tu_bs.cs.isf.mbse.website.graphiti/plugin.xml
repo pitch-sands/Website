@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            id="de.tu_bs.cs.isf.mbse.website.graphiti.diagram"
+            name="Website Diagram"
+            type="website">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            class="de.tu_bs.cs.isf.mbse.website.graphiti.WebsiteDiagramTypeProvider"
+            context="org.eclipse.graphiti.ui.diagramEditor"
+            id="de.tu_bs.cs.isf.mbse.website.graphiti.diagramTypeProvider"
+            name="Website Diagram Type Provider">
+         <diagramType
+               id="de.tu_bs.cs.isf.mbse.website.graphiti.diagram">
+         </diagramType>
+      </diagramTypeProvider>
+   </extension>
+
+</plugin>
