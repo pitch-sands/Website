@@ -13,6 +13,7 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
+import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
 public class UpdateImageBoxFeature extends AbstractUpdateFeature {
 	
@@ -68,6 +69,7 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
         if (bo instanceof ImageBox) {
         	ImageBox eClass = (ImageBox) bo;
             businessName = eClass.getName();
+            WebsiteModelUtil.INSTANCE.updateWidget();
         }
  
         // Set name in pictogram model

@@ -12,6 +12,7 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 
 
 import de.tu_bs.cs.isf.mbse.website.TextBox;
+import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
 public class UpdateTextBoxFeature extends AbstractUpdateFeature {
 	public UpdateTextBoxFeature(IFeatureProvider fp) {
@@ -68,6 +69,7 @@ public class UpdateTextBoxFeature extends AbstractUpdateFeature {
         if (bo instanceof TextBox) {
         	TextBox eClass = (TextBox) bo;
             businessName = eClass.getContent();
+            WebsiteModelUtil.INSTANCE.updateWidget();
         }
  
         // Set name in pictogram model

@@ -66,7 +66,7 @@ public class MyOpenFileFeature extends AbstractCustomFeature {
     				updatePictogramElement(pes[0]);
     			}
     		}
-    	}       
+    	}     
     }
  
     @Override

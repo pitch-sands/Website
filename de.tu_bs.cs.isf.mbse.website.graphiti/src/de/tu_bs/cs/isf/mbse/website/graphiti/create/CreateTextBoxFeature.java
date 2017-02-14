@@ -27,6 +27,8 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     	TextBox newState= WebsiteFactory.eINSTANCE.createTextBox();
         
         newState.setContent("Write your content here.");
+        newState.setColumn(context.getX());
+        newState.setRow(context.getY());
         getDiagram().eResource().getContents().add(newState);
         
         

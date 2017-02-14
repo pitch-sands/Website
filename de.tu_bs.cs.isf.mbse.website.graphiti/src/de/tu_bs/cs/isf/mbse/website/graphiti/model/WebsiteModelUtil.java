@@ -42,6 +42,9 @@ public class WebsiteModelUtil {
 		((Website) r.getContents().get(0)).getWidgets().add(s);
 		save();
 	}
+	public void updateWidget() {
+		save();
+	}
 
 	private void save() {
 		try {

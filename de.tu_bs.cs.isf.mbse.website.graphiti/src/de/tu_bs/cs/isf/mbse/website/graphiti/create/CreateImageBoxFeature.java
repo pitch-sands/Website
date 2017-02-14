@@ -29,6 +29,8 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 		//return null;
 		ImageBox newImage = WebsiteFactory.eINSTANCE.createImageBox();
 		newImage.setName("Image");
+		newImage.setColumn(context.getX());
+		newImage.setRow(context.getY());
 		//newImage.setRoute("Input Route..");
 		
 		WebsiteModelUtil.INSTANCE.addWidget(newImage);
