@@ -4,11 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 
 import de.tu_bs.cs.isf.mbse.website.Website;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
@@ -19,11 +24,22 @@ public class WebsiteModelUtil {
 	public Resource r;
 
 	// FIXME: DO NOT HARD-CODE THIS!
+	
+	/*
+	IWorkbenchPage getpage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+	String getfilename = getpage.getActiveEditor().getTitle().toString();
+
+	private final String PATH = "/Users/Jingjing/Desktop/" + getfilename + ".website";
+	*/
+		//IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TestProject");		
+		//IFile java_file = project.getFile(new Path("/java_file.txt"));
+		//IDE.openEditor(page, java_file);            
 	private final String PATH = "/Users/Jingjing/Desktop/ws2.website";
 	
 	public static WebsiteModelUtil INSTANCE = new WebsiteModelUtil();
 	
 	private WebsiteModelUtil() {
+		//System.out.println(getfilename);
 		if(new File(PATH).exists()) {
 			r = rs.getResource(URI.createFileURI(PATH), true);
 		} else {
