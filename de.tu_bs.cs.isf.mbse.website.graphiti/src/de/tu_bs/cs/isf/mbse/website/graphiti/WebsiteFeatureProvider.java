@@ -5,18 +5,29 @@ import org.eclipse.graphiti.features.IAddFeature;
 
 import org.eclipse.graphiti.features.ICreateFeature;
 import org.eclipse.graphiti.features.IDirectEditingFeature;
+import org.eclipse.graphiti.features.IMoveShapeFeature;
 import org.eclipse.graphiti.features.IUpdateFeature;
 import org.eclipse.graphiti.features.context.IAddContext;
 
 import org.eclipse.graphiti.features.context.IDirectEditingContext;
+import org.eclipse.graphiti.features.context.IMoveShapeContext;
 import org.eclipse.graphiti.features.context.IUpdateContext;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
+import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
 
+<<<<<<< HEAD
+=======
+import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyLayoutDiagramFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyRenameEClassFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.move.MoveWidgetFeature;
+>>>>>>> 9884925cf0072cfe82c64361ef29fef7130a2822
 import de.tu_bs.cs.isf.mbse.website.ButtonBox;
 import de.tu_bs.cs.isf.mbse.website.SearchBox;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
+import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddButtonBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddSearchBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddTextBoxFeature;
@@ -82,5 +93,25 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 	   }
 	   return super.getUpdateFeature(context);
 	}
+<<<<<<< HEAD
+=======
+	
+	@Override
+	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
+	    return new ICustomFeature[] { new MyRenameEClassFeature(this),
+	    							  new MyOpenFileFeature(this),
+	    							  new MyLayoutDiagramFeature(this)};
+	}
+	
+	@Override
+	public IMoveShapeFeature getMoveShapeFeature(IMoveShapeContext context) {
+	    Shape shape = context.getShape();
+	    Object bo = getBusinessObjectForPictogramElement(shape);
+	    if (bo instanceof Widget) {
+	        return new MoveWidgetFeature(this);
+	    }
+	    return super.getMoveShapeFeature(context);
+	}
+>>>>>>> 9884925cf0072cfe82c64361ef29fef7130a2822
 
 }
