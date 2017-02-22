@@ -7,6 +7,8 @@
         eType="#//Widget" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Widget">
+    <eOperations name="getRank" eType="#//Ranks"/>
+    <eOperations name="getFile" eType="#//Files"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="row" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -24,4 +26,51 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SearchBox" eSuperTypes="#//Widget"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuitemBox" eSuperTypes="#//Widget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Board">
+    <eOperations name="getSquare" eType="#//Square">
+      <eParameters name="rank" eType="#//Ranks"/>
+      <eParameters name="file" eType="#//Files"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="squares" lowerBound="64"
+        upperBound="64" eType="#//Square" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Square">
+    <eOperations name="getOffsetX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getOffsetY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="#//Files"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rank" eType="#//Ranks"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="widget" eType="#//Widget"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Files">
+    <eLiterals name="none"/>
+    <eLiterals name="A" value="1"/>
+    <eLiterals name="B" value="2"/>
+    <eLiterals name="C" value="3"/>
+    <eLiterals name="D" value="4"/>
+    <eLiterals name="E" value="5"/>
+    <eLiterals name="F" value="6"/>
+    <eLiterals name="G" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Ranks">
+    <eLiterals name="none"/>
+    <eLiterals name="A" value="1"/>
+    <eLiterals name="B" value="2"/>
+    <eLiterals name="C" value="3"/>
+    <eLiterals name="D" value="4"/>
+    <eLiterals name="E" value="5"/>
+    <eLiterals name="F" value="6"/>
+    <eLiterals name="G" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Color">
+    <eLiterals name="white"/>
+    <eLiterals name="blue" value="1"/>
+    <eLiterals name="none" value="2"/>
+  </eClassifiers>
 </ecore:EPackage>

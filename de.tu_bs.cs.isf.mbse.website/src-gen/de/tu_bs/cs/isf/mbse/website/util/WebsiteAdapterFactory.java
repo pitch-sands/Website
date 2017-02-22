@@ -92,6 +92,18 @@ public class WebsiteAdapterFactory extends AdapterFactoryImpl {
 				return createSearchBoxAdapter();
 			}
 			@Override
+			public Adapter caseMenuitemBox(MenuitemBox object) {
+				return createMenuitemBoxAdapter();
+			}
+			@Override
+			public Adapter caseBoard(Board object) {
+				return createBoardAdapter();
+			}
+			@Override
+			public Adapter caseSquare(Square object) {
+				return createSquareAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +204,48 @@ public class WebsiteAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSearchBoxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.tu_bs.cs.isf.mbse.website.MenuitemBox <em>Menuitem Box</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.tu_bs.cs.isf.mbse.website.MenuitemBox
+	 * @generated
+	 */
+	public Adapter createMenuitemBoxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.tu_bs.cs.isf.mbse.website.Board <em>Board</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.tu_bs.cs.isf.mbse.website.Board
+	 * @generated
+	 */
+	public Adapter createBoardAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.tu_bs.cs.isf.mbse.website.Square <em>Square</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.tu_bs.cs.isf.mbse.website.Square
+	 * @generated
+	 */
+	public Adapter createSquareAdapter() {
 		return null;
 	}
 

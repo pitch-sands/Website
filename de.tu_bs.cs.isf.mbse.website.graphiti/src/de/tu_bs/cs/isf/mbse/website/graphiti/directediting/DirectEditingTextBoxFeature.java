@@ -67,6 +67,7 @@ public class DirectEditingTextBoxFeature extends
         PictogramElement pe = context.getPictogramElement();
         TextBox eClass = (TextBox) getBusinessObjectForPictogramElement(pe);
         eClass.setContent(value);
+        
         System.out.println("SetValue:"+value);
         System.out.println("eClass.getContent():"+eClass.getContent());
  

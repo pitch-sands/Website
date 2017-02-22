@@ -19,7 +19,7 @@ public class WebsiteModelUtil {
 	public Resource r;
 
 	// FIXME: DO NOT HARD-CODE THIS!
-	private final String PATH = "/Users/Jingjing/Desktop/ws2.website";
+	private final String PATH = "/Users/cwp/Desktop/ws3.website";
 	
 	public static WebsiteModelUtil INSTANCE = new WebsiteModelUtil();
 	
@@ -40,9 +40,6 @@ public class WebsiteModelUtil {
 	//..
 	public void addWidget(Widget s) {
 		((Website) r.getContents().get(0)).getWidgets().add(s);
-		save();
-	}
-	public void updateWidget() {
 		save();
 	}
 

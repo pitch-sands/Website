@@ -23,9 +23,6 @@ public class CreateButtonBoxFeature extends AbstractCreateFeature{
     public Object[] create(ICreateContext context) {
     	ButtonBox newState= WebsiteFactory.eINSTANCE.createButtonBox();
         
-
-        newState.setColumn(context.getX());
-        newState.setRow(context.getY());
         getDiagram().eResource().getContents().add(newState);
         
         

@@ -210,6 +210,75 @@ public class WebsiteItemProviderAdapterFactory extends WebsiteAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.tu_bs.cs.isf.mbse.website.MenuitemBox} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MenuitemBoxItemProvider menuitemBoxItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.tu_bs.cs.isf.mbse.website.MenuitemBox}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMenuitemBoxAdapter() {
+		if (menuitemBoxItemProvider == null) {
+			menuitemBoxItemProvider = new MenuitemBoxItemProvider(this);
+		}
+
+		return menuitemBoxItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.tu_bs.cs.isf.mbse.website.Board} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BoardItemProvider boardItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.tu_bs.cs.isf.mbse.website.Board}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBoardAdapter() {
+		if (boardItemProvider == null) {
+			boardItemProvider = new BoardItemProvider(this);
+		}
+
+		return boardItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.tu_bs.cs.isf.mbse.website.Square} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SquareItemProvider squareItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.tu_bs.cs.isf.mbse.website.Square}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSquareAdapter() {
+		if (squareItemProvider == null) {
+			squareItemProvider = new SquareItemProvider(this);
+		}
+
+		return squareItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,6 +383,9 @@ public class WebsiteItemProviderAdapterFactory extends WebsiteAdapterFactory imp
 		if (imageBoxItemProvider != null) imageBoxItemProvider.dispose();
 		if (buttonBoxItemProvider != null) buttonBoxItemProvider.dispose();
 		if (searchBoxItemProvider != null) searchBoxItemProvider.dispose();
+		if (menuitemBoxItemProvider != null) menuitemBoxItemProvider.dispose();
+		if (boardItemProvider != null) boardItemProvider.dispose();
+		if (squareItemProvider != null) squareItemProvider.dispose();
 	}
 
 }

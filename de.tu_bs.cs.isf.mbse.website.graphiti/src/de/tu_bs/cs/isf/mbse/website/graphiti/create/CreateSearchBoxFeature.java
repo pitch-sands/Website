@@ -22,10 +22,7 @@ public class CreateSearchBoxFeature extends AbstractCreateFeature{
   
     public Object[] create(ICreateContext context) {
     	SearchBox newState= WebsiteFactory.eINSTANCE.createSearchBox();
-
-        newState.setColumn(context.getX());
-        newState.setRow(context.getY());
-    	
+        
         getDiagram().eResource().getContents().add(newState);
         
         

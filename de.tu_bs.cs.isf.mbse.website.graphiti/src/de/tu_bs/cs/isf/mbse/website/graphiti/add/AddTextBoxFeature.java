@@ -61,6 +61,7 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 			gaService.setLocationAndSize(roundedRectangle, 
 					context.getX(), context.getY(), width, height);
 			
+			
 			link(containerShape, addedState);
 		}
 
