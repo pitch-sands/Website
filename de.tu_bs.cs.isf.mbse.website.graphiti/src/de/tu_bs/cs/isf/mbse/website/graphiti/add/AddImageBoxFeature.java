@@ -36,7 +36,7 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		//return false;
 		return context.getNewObject() instanceof ImageBox
 					&& context.getTargetContainer() instanceof Diagram;
-		
+					
 	}
 
 	@Override
