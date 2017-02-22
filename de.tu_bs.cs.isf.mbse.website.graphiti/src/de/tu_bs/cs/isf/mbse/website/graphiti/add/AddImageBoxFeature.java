@@ -1,6 +1,5 @@
 package de.tu_bs.cs.isf.mbse.website.graphiti.add;
 
-import org.eclipse.graphiti.features.IDirectEditingInfo;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
@@ -14,45 +13,52 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
+import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
-
-import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
+import de.tu_bs.cs.isf.mbse.website.ImageBox;
 
-public class AddTextBoxFeature extends AbstractAddFeature {
+public class AddImageBoxFeature extends AbstractAddFeature {
 
 	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.BLACK;
-	private static final IColorConstant STATE_FOREGROUND = IColorConstant.GREEN;
-	private static final IColorConstant STATE_BACKGROUND = IColorConstant.ORANGE;
-
-	public AddTextBoxFeature(IFeatureProvider fp) {
+	private static final IColorConstant STATE_FOREGROUND = new ColorConstant(98,131,167);
+	private static final IColorConstant STATE_BACKGROUND = new ColorConstant(187,218,247); 
+	
+	
+	public AddImageBoxFeature(IFeatureProvider fp){
 		super(fp);
 	}
-
+	
 	@Override
 	public boolean canAdd(IAddContext context) {
-		return context.getNewObject() instanceof TextBox
-				&& context.getTargetContainer() instanceof Diagram
-				&& (context.getX()-50)%150 == 0 
-				&& (context.getY()-50)%100 == 0;
+		// TODO Auto-generated method stub
+		//return false;
+		return context.getNewObject() instanceof ImageBox
+					&& context.getTargetContainer() instanceof Diagram
+					&& (context.getX()-50)%150 == 0 
+					&& (context.getY()-50)%100 == 0;
+		
 	}
 
 	@Override
 	public PictogramElement add(IAddContext context) {
-		TextBox addedState = (TextBox) context.getNewObject();
+		// TODO Auto-generated method stub
+		//return null
+		ImageBox addedImage = (ImageBox) context.getNewObject();
 		Diagram targetDiagram = (Diagram) context.getTargetContainer();
-
-		// CONTAINER SHAPE WITH ROUNDED RECTANGLE
+		
+		//Container shape with rounded rectangle
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = 
-				peCreateService.createContainerShape(targetDiagram, true);
-
-		// define a default size for the shape
+					peCreateService.createContainerShape(targetDiagram, true);
+		
+		//define a default size for the shape
 		int width = 100;
-		int height = 50; 
+		int height = 50;
 		IGaService gaService = Graphiti.getGaService();
-		RoundedRectangle roundedRectangle; // need to access it later
+		RoundedRectangle roundedRectangle;
+		
 
 		{
 			// create and set graphics algorithm
@@ -63,41 +69,30 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 			gaService.setLocationAndSize(roundedRectangle, 
 					context.getX(), context.getY(), width, height);
 			
-			link(containerShape, addedState);
+			link(containerShape, addedImage);
 		}
 
 		// SHAPE WITH TEXT
 		{
 			// create shape for text
-			Shape shape = peCreateService.createShape(containerShape, true);
+			Shape shape = peCreateService.createShape(containerShape, false);
 
 			// create and set text graphics algorithm
-			Text text = gaService.createText(shape,addedState.getContent());
-			System.out.println("addedState.getName:"+ addedState.getName());
-			//addedState.getName()
+			Text text = gaService.createText(shape, addedImage.getName());
 			text.setForeground(manageColor(STATE_TEXT_FOREGROUND));
 			text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER ); 
 			// vertical alignment has as default value "center"
 			text.setFont(gaService.manageDefaultFont(getDiagram(), false, true));
-			gaService.setLocationAndSize(text, 0, 0, width, 20);
+			gaService.setLocationAndSize(text, 0, 0, width, 40);
 
 			// create link and wire it
-			link(shape, addedState);
+			link(shape, addedImage);
 			
-			// provide information to support direct-editing directly 
-	        // after object creation (must be activated additionally)
-	        IDirectEditingInfo directEditingInfo =
-	            getFeatureProvider().getDirectEditingInfo();
-	        // set container shape for direct editing after object creation
-	        directEditingInfo.setMainPictogramElement(containerShape);
-	        // set shape and graphics algorithm where the editor for
-	        // direct editing shall be opened after object creation
-	        directEditingInfo.setPictogramElement(shape);
-	        directEditingInfo.setGraphicsAlgorithm(text);
+			
 		}
 		
-		if (addedState.eResource() == null) {
-			WebsiteModelUtil.INSTANCE.addWidget(addedState);
+		if (addedImage.eResource() == null) {
+			WebsiteModelUtil.INSTANCE.addWidget(addedImage);
 		}
 		
 		// add a chopbox anchor to the shape 
@@ -109,3 +104,4 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 		return containerShape;
 	}
 }
+

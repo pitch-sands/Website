@@ -24,9 +24,6 @@ public class WebsiteModelUtil {
 	public Resource r;
 
 	// FIXME: DO NOT HARD-CODE THIS!
-<<<<<<< HEAD
-	private final String PATH = "/Users/cwp/Desktop/ws3.website";
-=======
 	
 	/*
 	IWorkbenchPage getpage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
@@ -37,8 +34,7 @@ public class WebsiteModelUtil {
 		//IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TestProject");		
 		//IFile java_file = project.getFile(new Path("/java_file.txt"));
 		//IDE.openEditor(page, java_file);            
-	private final String PATH = "/Users/Jingjing/Desktop/ws2.website";
->>>>>>> 9884925cf0072cfe82c64361ef29fef7130a2822
+	private final String PATH = "/Users/cwp/Desktop/ws.website";
 	
 	public static WebsiteModelUtil INSTANCE = new WebsiteModelUtil();
 	
@@ -60,6 +56,9 @@ public class WebsiteModelUtil {
 	//..
 	public void addWidget(Widget s) {
 		((Website) r.getContents().get(0)).getWidgets().add(s);
+		save();
+	}
+	public void updateWidget() {
 		save();
 	}
 

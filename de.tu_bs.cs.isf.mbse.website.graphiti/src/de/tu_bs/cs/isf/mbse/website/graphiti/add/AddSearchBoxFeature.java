@@ -31,7 +31,9 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		return context.getNewObject() instanceof SearchBox
-				&& context.getTargetContainer() instanceof Diagram;
+				&& context.getTargetContainer() instanceof Diagram
+				&& (context.getX()-50)%150 == 0 
+				&& (context.getY()-50)%100 == 0;
 	}
 
 	@Override
