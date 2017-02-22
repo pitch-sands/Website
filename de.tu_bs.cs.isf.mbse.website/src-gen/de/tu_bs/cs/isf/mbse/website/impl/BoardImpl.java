@@ -2,6 +2,8 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
+import de.tu_bs.cs.isf.mbse.website.Color;
+import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.Files;
 import de.tu_bs.cs.isf.mbse.website.Ranks;
@@ -47,6 +49,7 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 	 * @ordered
 	 */
 	protected EList<Square> squares;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,6 +57,49 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 	 */
 	protected BoardImpl() {
 		super();
+		// Add squares
+		for (int i = 0; i < 64; i++) {
+			Square square = WebsiteFactory.eINSTANCE.createSquare();
+
+			// Index
+			square.setIndex(i);
+
+			// Compute rank
+			int rank = (63 - square.getIndex()) / 8 + 1;
+			square.setRank(Ranks.get(rank));
+
+			// Compute file
+			int file = (square.getIndex()) % 8 + 1;
+			square.setFile(Files.get(file));
+
+			// Compute color
+			Color color;
+			/*
+			if (file % 2 == 0) {
+				if (rank % 2 == 0) {
+					color = Colors.LIGHT;
+				} else {
+					color = Colors.DARK;
+				}
+			} else {
+				if (rank % 2 == 0) {
+					color = Colors.DARK;
+				} else {
+					color = Colors.LIGHT;
+				}
+			}
+			*/
+			if(rank == 8)
+			{
+				color = Color.BLUE;
+			}
+			else {
+				color = Color.WHITE;
+			}
+			square.setColor(color);
+
+			getSquares().add(square);
+		}
 	}
 
 	/**

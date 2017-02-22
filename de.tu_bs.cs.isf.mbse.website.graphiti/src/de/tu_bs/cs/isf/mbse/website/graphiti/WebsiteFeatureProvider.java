@@ -22,6 +22,9 @@ import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyLayoutDiagramFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyRenameEClassFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.move.MoveWidgetFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateBoardFeature;
+import de.tu_bs.cs.isf.mbse.website.Board;
+import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddBoardFeature;
 import de.tu_bs.cs.isf.mbse.website.ButtonBox;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.SearchBox;
@@ -59,6 +62,9 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		else if (context.getNewObject() instanceof ImageBox) {
 			return new AddImageBoxFeature(this);
 		}
+		else if (context.getNewObject() instanceof Board) {
+			return new AddBoardFeature(this);
+		}
 		return super.getAddFeature(context);
 	}
 
@@ -68,7 +74,7 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		return new ICreateFeature[] { new CreateTextBoxFeature(this),
 				new CreateSearchBoxFeature(this),
 				new CreateButtonBoxFeature(this),
-				new CreateImageBoxFeature(this)};
+				new CreateImageBoxFeature(this),new CreateBoardFeature(this)};
 		
 	}
 	

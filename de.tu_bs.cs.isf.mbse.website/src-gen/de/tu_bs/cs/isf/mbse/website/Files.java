@@ -96,7 +96,15 @@ public enum Files implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	G(7, "G", "G");
+	G(7, "G", "G"), /**
+	 * The '<em><b>H</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #H_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	H(8, "H", "H");
 
 	/**
 	 * The '<em><b>None</b></em>' literal value.
@@ -219,6 +227,21 @@ public enum Files implements Enumerator {
 	public static final int G_VALUE = 7;
 
 	/**
+	 * The '<em><b>H</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>H</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #H
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int H_VALUE = 8;
+
+	/**
 	 * An array of all the '<em><b>Files</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -234,6 +257,7 @@ public enum Files implements Enumerator {
 			E,
 			F,
 			G,
+			H,
 		};
 
 	/**
@@ -298,6 +322,7 @@ public enum Files implements Enumerator {
 			case E_VALUE: return E;
 			case F_VALUE: return F;
 			case G_VALUE: return G;
+			case H_VALUE: return H;
 		}
 		return null;
 	}

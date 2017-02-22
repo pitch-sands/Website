@@ -672,6 +672,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 		addEEnumLiteral(filesEEnum, Files.E);
 		addEEnumLiteral(filesEEnum, Files.F);
 		addEEnumLiteral(filesEEnum, Files.G);
+		addEEnumLiteral(filesEEnum, Files.H);
 
 		initEEnum(ranksEEnum, Ranks.class, "Ranks");
 		addEEnumLiteral(ranksEEnum, Ranks.NONE);
@@ -682,6 +683,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 		addEEnumLiteral(ranksEEnum, Ranks.E);
 		addEEnumLiteral(ranksEEnum, Ranks.F);
 		addEEnumLiteral(ranksEEnum, Ranks.G);
+		addEEnumLiteral(ranksEEnum, Ranks.H);
 
 		initEEnum(colorEEnum, Color.class, "Color");
 		addEEnumLiteral(colorEEnum, Color.WHITE);

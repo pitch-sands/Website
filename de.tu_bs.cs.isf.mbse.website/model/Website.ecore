@@ -57,6 +57,7 @@
     <eLiterals name="E" value="5"/>
     <eLiterals name="F" value="6"/>
     <eLiterals name="G" value="7"/>
+    <eLiterals name="H" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Ranks">
     <eLiterals name="none"/>
@@ -67,6 +68,7 @@
     <eLiterals name="E" value="5"/>
     <eLiterals name="F" value="6"/>
     <eLiterals name="G" value="7"/>
+    <eLiterals name="H" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Color">
     <eLiterals name="white"/>

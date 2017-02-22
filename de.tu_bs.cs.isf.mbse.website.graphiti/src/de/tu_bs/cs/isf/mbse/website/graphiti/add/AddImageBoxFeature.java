@@ -17,6 +17,7 @@ import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
+import de.tu_bs.cs.isf.mbse.website.ButtonBox;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
 
 public class AddImageBoxFeature extends AbstractAddFeature {
@@ -34,16 +35,11 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	public boolean canAdd(IAddContext context) {
 		// TODO Auto-generated method stub
 		//return false;
+
 		return context.getNewObject() instanceof ImageBox
-<<<<<<< HEAD
-					&& context.getTargetContainer() instanceof Diagram;
-					
-=======
-					&& context.getTargetContainer() instanceof Diagram
-					&& (context.getX()-50)%150 == 0 
-					&& (context.getY()-50)%100 == 0;
-		
->>>>>>> b2870c1b90dd99ed63342db83b9ef997ba592548
+				&& context.getTargetContainer() instanceof Diagram
+				&& (context.getX()-50)%150 == 0 
+				&& (context.getY()-50)%100 == 0;
 	}
 
 	@Override
