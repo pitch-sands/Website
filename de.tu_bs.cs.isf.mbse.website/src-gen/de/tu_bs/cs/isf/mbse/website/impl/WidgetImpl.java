@@ -2,11 +2,15 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
+import de.tu_bs.cs.isf.mbse.website.Files;
+import de.tu_bs.cs.isf.mbse.website.Ranks;
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
 import de.tu_bs.cs.isf.mbse.website.Widget;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -259,6 +263,28 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Ranks getRank() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Files getFile() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -350,6 +376,22 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 				return column != COLUMN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case WebsitePackage.WIDGET___GET_RANK:
+				return getRank();
+			case WebsitePackage.WIDGET___GET_FILE:
+				return getFile();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

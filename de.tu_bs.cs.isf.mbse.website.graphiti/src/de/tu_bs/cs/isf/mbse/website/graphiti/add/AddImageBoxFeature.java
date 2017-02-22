@@ -35,8 +35,15 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		// TODO Auto-generated method stub
 		//return false;
 		return context.getNewObject() instanceof ImageBox
+<<<<<<< HEAD
 					&& context.getTargetContainer() instanceof Diagram;
 					
+=======
+					&& context.getTargetContainer() instanceof Diagram
+					&& (context.getX()-50)%150 == 0 
+					&& (context.getY()-50)%100 == 0;
+		
+>>>>>>> b2870c1b90dd99ed63342db83b9ef997ba592548
 	}
 
 	@Override

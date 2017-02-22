@@ -76,6 +76,33 @@ public interface WebsiteFactory extends EFactory {
 	SearchBox createSearchBox();
 
 	/**
+	 * Returns a new object of class '<em>Menuitem Box</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Menuitem Box</em>'.
+	 * @generated
+	 */
+	MenuitemBox createMenuitemBox();
+
+	/**
+	 * Returns a new object of class '<em>Board</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Board</em>'.
+	 * @generated
+	 */
+	Board createBoard();
+
+	/**
+	 * Returns a new object of class '<em>Square</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Square</em>'.
+	 * @generated
+	 */
+	Square createSquare();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

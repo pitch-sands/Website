@@ -3,6 +3,7 @@ package de.tu_bs.cs.isf.mbse.website.graphiti.move;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.IReason;
+import org.eclipse.graphiti.features.context.IDirectEditingContext;
 import org.eclipse.graphiti.features.context.IMoveShapeContext;
 import org.eclipse.graphiti.features.context.IUpdateContext;
 import org.eclipse.graphiti.features.impl.DefaultMoveShapeFeature;
@@ -51,14 +52,20 @@ public class MoveWidgetFeature extends DefaultMoveShapeFeature{
     			int y = ga.getY();
     			int y_1 = ga.getY() + ga.getHeight();
     			
+    			System.out.println("x-coordinate:"+context.getX());
+    			if( (context.getX()-50) % 150 != 0 || (context.getY()-50) % 100 != 0){
+    				canMove = false;
+    			}
     			if((context.getX() + thisGa.getWidth()) > x &&
     				context.getX() <x_1 && (context.getY() + thisGa.getHeight()) 
-    				> y && context.getY() <y_1){
+    				> y && context.getY() <y_1 ){
+    				
     					canMove = false;
     				}
+    			
     		}
     	}
-        
+          
         
         return canMove;
     }
@@ -76,5 +83,8 @@ public class MoveWidgetFeature extends DefaultMoveShapeFeature{
         	eClass.setColumn(context.getX());
             WebsiteModelUtil.INSTANCE.updateWidget();
         }
-    }
-}
+        
+    	
+    	}
+ }
+

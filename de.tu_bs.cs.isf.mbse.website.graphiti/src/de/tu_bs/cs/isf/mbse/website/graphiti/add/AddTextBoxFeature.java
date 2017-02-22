@@ -33,7 +33,9 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		return context.getNewObject() instanceof TextBox
-				&& context.getTargetContainer() instanceof Diagram;
+				&& context.getTargetContainer() instanceof Diagram
+				&& (context.getX()-50)%150 == 0 
+				&& (context.getY()-50)%100 == 0;
 	}
 
 	@Override

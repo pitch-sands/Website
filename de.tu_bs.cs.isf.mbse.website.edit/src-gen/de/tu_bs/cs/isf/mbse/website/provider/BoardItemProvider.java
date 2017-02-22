@@ -3,7 +3,7 @@
 package de.tu_bs.cs.isf.mbse.website.provider;
 
 
-import de.tu_bs.cs.isf.mbse.website.Website;
+import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
 
@@ -17,24 +17,22 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.tu_bs.cs.isf.mbse.website.Website} object.
+ * This is the item provider adapter for a {@link de.tu_bs.cs.isf.mbse.website.Board} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class WebsiteItemProvider 
+public class BoardItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +46,7 @@ public class WebsiteItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WebsiteItemProvider(AdapterFactory adapterFactory) {
+	public BoardItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,31 +61,8 @@ public class WebsiteItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Website_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Website_name_feature", "_UI_Website_type"),
-				 WebsitePackage.Literals.WEBSITE__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -102,7 +77,7 @@ public class WebsiteItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(WebsitePackage.Literals.WEBSITE__WIDGETS);
+			childrenFeatures.add(WebsitePackage.Literals.BOARD__SQUARES);
 		}
 		return childrenFeatures;
 	}
@@ -121,14 +96,14 @@ public class WebsiteItemProvider
 	}
 
 	/**
-	 * This returns Website.gif.
+	 * This returns Board.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Website"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Board"));
 	}
 
 	/**
@@ -139,10 +114,7 @@ public class WebsiteItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Website)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Website_type") :
-			getString("_UI_Website_type") + " " + label;
+		return getString("_UI_Board_type");
 	}
 	
 
@@ -157,11 +129,8 @@ public class WebsiteItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Website.class)) {
-			case WebsitePackage.WEBSITE__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case WebsitePackage.WEBSITE__WIDGETS:
+		switch (notification.getFeatureID(Board.class)) {
+			case WebsitePackage.BOARD__SQUARES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,33 +150,8 @@ public class WebsiteItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createWidget()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createTextBox()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createImageBox()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createButtonBox()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createSearchBox()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WebsitePackage.Literals.WEBSITE__WIDGETS,
-				 WebsiteFactory.eINSTANCE.createMenuitemBox()));
+				(WebsitePackage.Literals.BOARD__SQUARES,
+				 WebsiteFactory.eINSTANCE.createSquare()));
 	}
 
 	/**

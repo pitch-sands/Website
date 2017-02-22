@@ -5,6 +5,7 @@ package de.tu_bs.cs.isf.mbse.website.impl;
 import de.tu_bs.cs.isf.mbse.website.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -62,8 +63,49 @@ public class WebsiteFactoryImpl extends EFactoryImpl implements WebsiteFactory {
 			case WebsitePackage.IMAGE_BOX: return createImageBox();
 			case WebsitePackage.BUTTON_BOX: return createButtonBox();
 			case WebsitePackage.SEARCH_BOX: return createSearchBox();
+			case WebsitePackage.MENUITEM_BOX: return createMenuitemBox();
+			case WebsitePackage.BOARD: return createBoard();
+			case WebsitePackage.SQUARE: return createSquare();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case WebsitePackage.FILES:
+				return createFilesFromString(eDataType, initialValue);
+			case WebsitePackage.RANKS:
+				return createRanksFromString(eDataType, initialValue);
+			case WebsitePackage.COLOR:
+				return createColorFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case WebsitePackage.FILES:
+				return convertFilesToString(eDataType, instanceValue);
+			case WebsitePackage.RANKS:
+				return convertRanksToString(eDataType, instanceValue);
+			case WebsitePackage.COLOR:
+				return convertColorToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -125,6 +167,96 @@ public class WebsiteFactoryImpl extends EFactoryImpl implements WebsiteFactory {
 	public SearchBox createSearchBox() {
 		SearchBoxImpl searchBox = new SearchBoxImpl();
 		return searchBox;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MenuitemBox createMenuitemBox() {
+		MenuitemBoxImpl menuitemBox = new MenuitemBoxImpl();
+		return menuitemBox;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Board createBoard() {
+		BoardImpl board = new BoardImpl();
+		return board;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Square createSquare() {
+		SquareImpl square = new SquareImpl();
+		return square;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Files createFilesFromString(EDataType eDataType, String initialValue) {
+		Files result = Files.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFilesToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Ranks createRanksFromString(EDataType eDataType, String initialValue) {
+		Ranks result = Ranks.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRanksToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Color createColorFromString(EDataType eDataType, String initialValue) {
+		Color result = Color.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
