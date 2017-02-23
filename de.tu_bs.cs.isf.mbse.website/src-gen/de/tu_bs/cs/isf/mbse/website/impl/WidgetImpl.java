@@ -3,18 +3,26 @@
 package de.tu_bs.cs.isf.mbse.website.impl;
 
 import de.tu_bs.cs.isf.mbse.website.Files;
+
 import de.tu_bs.cs.isf.mbse.website.Ranks;
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
 import de.tu_bs.cs.isf.mbse.website.Widget;
+import de.tu_bs.cs.isf.mbse.website.Square;
 
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+
+
+
+
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +41,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
+public class WidgetImpl extends EObjectImpl implements Widget {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -158,8 +166,79 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	
+	/**
+	 * The cached value of the '{@link #getSquare() <em>Square</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSquare()
+	 * @generated
+	 * @ordered
+	 */
+	protected Square square;
+	
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Square getSquare() {
+		if (square != null && square.eIsProxy()) {
+			InternalEObject oldSquare = (InternalEObject)square;
+			square = (Square)eResolveProxy(oldSquare);
+			if (square != oldSquare) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WebsitePackage.SQUARE__WIDGET, oldSquare, square));
+			}
+		}
+		return square;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Square basicGetSquare() {
+		return square;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSquare(Square newSquare, NotificationChain msgs) {
+		Square oldSquare = square;
+		square = newSquare;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, oldSquare, newSquare);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSquare(Square newSquare) {
+		if (newSquare != square) {
+			NotificationChain msgs = null;
+			if (square != null)
+				msgs = ((InternalEObject)square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+			if (newSquare != null)
+				msgs = ((InternalEObject)newSquare).eInverseAdd(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+			msgs = basicSetSquare(newSquare, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, newSquare, newSquare));
 	}
 
 	/**

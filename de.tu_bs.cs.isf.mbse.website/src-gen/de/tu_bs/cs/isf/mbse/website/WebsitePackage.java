@@ -722,6 +722,8 @@ public interface WebsitePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOARD__SQUARES = 0;
+	
+	
 
 	/**
 	 * The number of structural features of the '<em>Board</em>' class.

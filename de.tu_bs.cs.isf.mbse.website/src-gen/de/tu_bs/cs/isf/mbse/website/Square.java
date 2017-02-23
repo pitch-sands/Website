@@ -4,6 +4,7 @@ package de.tu_bs.cs.isf.mbse.website;
 
 import org.eclipse.emf.ecore.EObject;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Square</b></em>'.
@@ -180,5 +181,7 @@ public interface Square extends EObject {
 	 * @generated
 	 */
 	int getOffsetY();
+
+
 
 } // Square

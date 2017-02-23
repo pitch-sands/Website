@@ -1,12 +1,15 @@
 package de.tu_bs.cs.isf.mbse.website.graphiti.create;
 
+
+
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICreateContext;
 
 import org.eclipse.graphiti.features.impl.AbstractCreateFeature;
+import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
-
-
+import de.tu_bs.cs.isf.mbse.website.Square;
+import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
@@ -19,7 +22,8 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     }
  
     public boolean canCreate(ICreateContext context) {
-        return context.getTargetContainer() instanceof Diagram;
+    	System.out.println("canCreate:"+ context.getTargetContainer().toString());
+    	return context.getTargetContainer() instanceof ContainerShape;
     }
  
   
@@ -41,4 +45,6 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
         WebsiteModelUtil.INSTANCE.addWidget(newState);
         return new Object[] { newState };
     }
+    
+    
 }

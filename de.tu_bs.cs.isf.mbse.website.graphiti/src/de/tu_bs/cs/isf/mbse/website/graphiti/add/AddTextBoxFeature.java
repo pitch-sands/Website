@@ -1,9 +1,12 @@
 package de.tu_bs.cs.isf.mbse.website.graphiti.add;
 
+
+
 import org.eclipse.graphiti.features.IDirectEditingInfo;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
+import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
@@ -20,7 +23,7 @@ import org.eclipse.graphiti.util.IColorConstant;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
-public class AddTextBoxFeature extends AbstractAddFeature {
+public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 
 	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.BLACK;
 	private static final IColorConstant STATE_FOREGROUND = IColorConstant.GREEN;
@@ -32,16 +35,21 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 
 	@Override
 	public boolean canAdd(IAddContext context) {
-		return context.getNewObject() instanceof TextBox
-				&& context.getTargetContainer() instanceof Diagram
-				&& (context.getX()-50)%150 == 0 
-				&& (context.getY()-50)%100 == 0;
+		if (context.getNewObject() instanceof TextBox) {
+			if (context.getTargetContainer() instanceof Diagram == false) {
+				System.out.println("lalatrue"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
+				// Add new board only in case of an empty diagram
+				return context.getTargetContainer().getChildren().size() == 0;
+			}
+		}
+		System.out.println("lalafalse"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
+		return false;
 	}
 
 	@Override
 	public PictogramElement add(IAddContext context) {
 		TextBox addedState = (TextBox) context.getNewObject();
-		Diagram targetDiagram = (Diagram) context.getTargetContainer();
+		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
 		// CONTAINER SHAPE WITH ROUNDED RECTANGLE
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
@@ -50,7 +58,7 @@ public class AddTextBoxFeature extends AbstractAddFeature {
 
 		// define a default size for the shape
 		int width = 100;
-		int height = 50; 
+		int height = 100; 
 		IGaService gaService = Graphiti.getGaService();
 		RoundedRectangle roundedRectangle; // need to access it later
 

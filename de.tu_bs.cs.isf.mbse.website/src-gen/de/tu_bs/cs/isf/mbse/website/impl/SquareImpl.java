@@ -2,6 +2,7 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
+import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.Files;
 import de.tu_bs.cs.isf.mbse.website.Ranks;
@@ -12,14 +13,17 @@ import de.tu_bs.cs.isf.mbse.website.Widget;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +42,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
+public class SquareImpl extends EObjectImpl implements Square {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -428,5 +432,9 @@ public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 		result.append(')');
 		return result.toString();
 	}
+
+	
+
+	
 
 } //SquareImpl

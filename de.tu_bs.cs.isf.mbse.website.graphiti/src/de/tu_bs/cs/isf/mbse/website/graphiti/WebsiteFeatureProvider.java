@@ -21,7 +21,7 @@ import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyLayoutDiagramFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyRenameEClassFeature;
-import de.tu_bs.cs.isf.mbse.website.graphiti.move.MoveWidgetFeature;
+
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateBoardFeature;
 import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddBoardFeature;
@@ -116,14 +116,14 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 	    							  new MyLayoutDiagramFeature(this)};
 	}
 	
-	@Override
-	public IMoveShapeFeature getMoveShapeFeature(IMoveShapeContext context) {
-	    Shape shape = context.getShape();
-	    Object bo = getBusinessObjectForPictogramElement(shape);
-	    if (bo instanceof Widget) {
-	        return new MoveWidgetFeature(this);
-	    }
-	    return super.getMoveShapeFeature(context);
-	}
+	//@Override
+	//public IMoveShapeFeature getMoveShapeFeature(IMoveShapeContext context) {
+	 //   Shape shape = context.getShape();
+	//    Object bo = getBusinessObjectForPictogramElement(shape);
+	//    if (bo instanceof Widget) {
+	//        return new MoveWidgetFeature(this);
+	  //  }
+	  //  return super.getMoveShapeFeature(context);
+	//}
 
 }
