@@ -16,8 +16,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 
 
 
@@ -37,11 +37,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.WidgetImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.WidgetImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.WidgetImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.WidgetImpl#getSquare <em>Square</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WidgetImpl extends EObjectImpl implements Widget {
+public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -186,17 +187,27 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Square getSquare() {
-		if (square != null && square.eIsProxy()) {
-			InternalEObject oldSquare = (InternalEObject)square;
-			square = (Square)eResolveProxy(oldSquare);
-			if (square != oldSquare) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WebsitePackage.SQUARE__WIDGET, oldSquare, square));
+
+		public Square getSquare() {
+			if (square != null && square.eIsProxy()) {
+				InternalEObject oldSquare = (InternalEObject) square;
+				square = (Square) eResolveProxy(oldSquare);
+				if (square != oldSquare) {
+					if (eNotificationRequired())
+						eNotify(new ENotificationImpl(this, Notification.RESOLVE, WebsitePackage.WIDGET__SQUARE, oldSquare,
+								square));
+				}
 			}
+			return square;
 		}
-		return square;
-	}
+		
+		/**
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		
+	
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,16 +219,20 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSquare(Square newSquare, NotificationChain msgs) {
 		Square oldSquare = square;
 		square = newSquare;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, oldSquare, newSquare);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.WIDGET__SQUARE,
+					oldSquare, newSquare);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -227,18 +242,23 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setSquare(Square newSquare) {
 		if (newSquare != square) {
 			NotificationChain msgs = null;
 			if (square != null)
-				msgs = ((InternalEObject)square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+				msgs = ((InternalEObject) square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
 			if (newSquare != null)
-				msgs = ((InternalEObject)newSquare).eInverseAdd(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+				msgs = ((InternalEObject) newSquare).eInverseAdd(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
 			msgs = basicSetSquare(newSquare, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, newSquare, newSquare));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.WIDGET__SQUARE, newSquare, newSquare));
 	}
 
 	/**
@@ -365,6 +385,36 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WebsitePackage.WIDGET__SQUARE:
+				if (square != null)
+					msgs = ((InternalEObject)square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+				return basicSetSquare((Square)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WebsitePackage.WIDGET__SQUARE:
+				return basicSetSquare(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case WebsitePackage.WIDGET__NAME:
@@ -377,6 +427,9 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 				return getHeight();
 			case WebsitePackage.WIDGET__COLUMN:
 				return getColumn();
+			case WebsitePackage.WIDGET__SQUARE:
+				if (resolve) return getSquare();
+				return basicGetSquare();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -403,6 +456,9 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 				return;
 			case WebsitePackage.WIDGET__COLUMN:
 				setColumn((Integer)newValue);
+				return;
+			case WebsitePackage.WIDGET__SQUARE:
+				setSquare((Square)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -431,6 +487,9 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 			case WebsitePackage.WIDGET__COLUMN:
 				setColumn(COLUMN_EDEFAULT);
 				return;
+			case WebsitePackage.WIDGET__SQUARE:
+				setSquare((Square)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -453,6 +512,8 @@ public class WidgetImpl extends EObjectImpl implements Widget {
 				return height != HEIGHT_EDEFAULT;
 			case WebsitePackage.WIDGET__COLUMN:
 				return column != COLUMN_EDEFAULT;
+			case WebsitePackage.WIDGET__SQUARE:
+				return square != null;
 		}
 		return super.eIsSet(featureID);
 	}

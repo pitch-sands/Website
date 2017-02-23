@@ -65,6 +65,7 @@ public class WidgetItemProvider
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 			addColumnPropertyDescriptor(object);
+			addSquarePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -175,6 +176,28 @@ public class WidgetItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Square feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSquarePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Widget_square_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Widget_square_feature", "_UI_Widget_type"),
+				 WebsitePackage.Literals.WIDGET__SQUARE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

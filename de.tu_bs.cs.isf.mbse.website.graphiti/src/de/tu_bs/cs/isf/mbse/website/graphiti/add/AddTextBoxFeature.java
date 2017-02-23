@@ -21,6 +21,7 @@ import org.eclipse.graphiti.util.IColorConstant;
 
 
 import de.tu_bs.cs.isf.mbse.website.TextBox;
+import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
 public class AddTextBoxFeature extends AbstractAddShapeFeature  {
@@ -36,13 +37,14 @@ public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof TextBox) {
+			Widget widget = (Widget)context.getNewObject();
 			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println("lalatrue"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
+				System.out.println("square: "+widget.getSquare());
 				// Add new board only in case of an empty diagram
 				return context.getTargetContainer().getChildren().size() == 0;
 			}
 		}
-		System.out.println("lalafalse"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
+		
 		return false;
 	}
 

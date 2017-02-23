@@ -14,6 +14,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="square" lowerBound="1"
+        eType="#//Square" eOpposite="#//Square/widget"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextBox" eSuperTypes="#//Widget">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,6 +39,8 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="squares" lowerBound="64"
         upperBound="64" eType="#//Square" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="64"
+        eType="#//Widget" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Square">
     <eOperations name="getOffsetX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -46,7 +50,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rank" eType="#//Ranks"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"
         defaultValueLiteral="none"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widget" eType="#//Widget"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="widget" eType="#//Widget"
+        eOpposite="#//Widget/square"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Files">
     <eLiterals name="none"/>

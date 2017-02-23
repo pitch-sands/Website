@@ -5,7 +5,6 @@ package de.tu_bs.cs.isf.mbse.website.impl;
 import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.Square;
-import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -57,14 +56,6 @@ public class ImageBoxImpl extends WidgetImpl implements ImageBox {
 		super();
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	protected Square square;
-	
 	@Override
 	protected EClass eStaticClass() {
 		return WebsitePackage.Literals.IMAGE_BOX;

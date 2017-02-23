@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.Widget#getWidth <em>Width</em>}</li>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.Widget#getHeight <em>Height</em>}</li>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.Widget#getColumn <em>Column</em>}</li>
+ *   <li>{@link de.tu_bs.cs.isf.mbse.website.Widget#getSquare <em>Square</em>}</li>
  * </ul>
  *
  * @see de.tu_bs.cs.isf.mbse.website.WebsitePackage#getWidget()
@@ -170,5 +171,17 @@ public interface Widget extends EObject {
 	 * @generated
 	 */
 	Files getFile();
+
+	Square getSquare();
+
+	/**
+	 * Sets the value of the '{@link de.tu_bs.cs.isf.mbse.website.Widget#getSquare <em>Square</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Square</em>' reference.
+	 * @see #getSquare()
+	 * @generated
+	 */
+	void setSquare(Square value);
 
 } // Widget

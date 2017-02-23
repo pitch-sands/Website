@@ -264,6 +264,15 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getWidget_Square() {
+		return (EReference)widgetEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getWidget__GetRank() {
 		return widgetEClass.getEOperations().get(0);
 	}
@@ -392,6 +401,15 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 	 */
 	public EReference getBoard_Squares() {
 		return (EReference)boardEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBoard_Widgets() {
+		return (EReference)boardEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -540,6 +558,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 		createEAttribute(widgetEClass, WIDGET__WIDTH);
 		createEAttribute(widgetEClass, WIDGET__HEIGHT);
 		createEAttribute(widgetEClass, WIDGET__COLUMN);
+		createEReference(widgetEClass, WIDGET__SQUARE);
 		createEOperation(widgetEClass, WIDGET___GET_RANK);
 		createEOperation(widgetEClass, WIDGET___GET_FILE);
 
@@ -561,6 +580,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 
 		boardEClass = createEClass(BOARD);
 		createEReference(boardEClass, BOARD__SQUARES);
+		createEReference(boardEClass, BOARD__WIDGETS);
 		createEOperation(boardEClass, BOARD___GET_SQUARE__RANKS_FILES);
 
 		squareEClass = createEClass(SQUARE);
@@ -623,6 +643,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 		initEAttribute(getWidget_Width(), ecorePackage.getEDouble(), "width", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWidget_Height(), ecorePackage.getEDouble(), "height", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWidget_Column(), ecorePackage.getEInt(), "column", null, 0, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWidget_Square(), this.getSquare(), this.getSquare_Widget(), "square", null, 1, 1, Widget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getWidget__GetRank(), this.getRanks(), "getRank", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -646,6 +667,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 
 		initEClass(boardEClass, Board.class, "Board", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBoard_Squares(), this.getSquare(), null, "squares", null, 64, 64, Board.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBoard_Widgets(), this.getWidget(), null, "widgets", null, 0, 64, Board.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getBoard__GetSquare__Ranks_Files(), this.getSquare(), "getSquare", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRanks(), "rank", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -656,7 +678,7 @@ public class WebsitePackageImpl extends EPackageImpl implements WebsitePackage {
 		initEAttribute(getSquare_File(), this.getFiles(), "file", null, 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSquare_Rank(), this.getRanks(), "rank", null, 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSquare_Color(), this.getColor(), "color", "none", 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSquare_Widget(), this.getWidget(), null, "widget", null, 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSquare_Widget(), this.getWidget(), this.getWidget_Square(), "widget", null, 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSquare__GetOffsetX(), ecorePackage.getEInt(), "getOffsetX", 0, 1, IS_UNIQUE, IS_ORDERED);
 

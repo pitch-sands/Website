@@ -34,21 +34,14 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 		// TODO Auto-generated method stub
 		//return false;
 
-		Board board = getBoard(context);
-		if (board != null) {
-			// Allow the creation of the initial set of pieces in case a
-			// board exists...
-				return true;
-			
-		}
-		return false;
+		return context.getTargetContainer() instanceof ContainerShape;
 	}
 
 	@Override
 	public Object[] create(ICreateContext context) {
 
 		// Get the chess board
-		Board board = getBoard(context);
+		//Board board = getBoard(context);
 		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());
 		Square targetSquare = (Square) targetBO;
 		
@@ -56,7 +49,7 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 		
 		ImageBox imagebox = WebsiteFactory.eINSTANCE.createImageBox();
 		imagebox.eResource().getContents().add(imagebox);
-		imagebox.setBoard(board);
+		//imagebox.setBoard(board);
 		imagebox.setSquare(targetSquare);
 		
 		
@@ -81,16 +74,16 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 		return new Object[] { imagebox };
 	}
 
-	private Board getBoard(ICreateContext context) {
-		ContainerShape targetContainer = context.getTargetContainer();
-		Object bo = getBusinessObjectForPictogramElement(targetContainer);
-		if (bo instanceof Board) {
-			return (Board) bo;
-		} else if (bo instanceof Square) {
-			return ((Square) bo).getBoard();
-		}
-		return null;
-	}
+	//private Board getBoard(ICreateContext context) {
+	//	ContainerShape targetContainer = context.getTargetContainer();
+	//	Object bo = getBusinessObjectForPictogramElement(targetContainer);
+	//	if (bo instanceof Board) {
+	//	return (Board) bo;
+	//	} else if (bo instanceof Square) {
+	//		return ((Square) bo).getBoard();
+	//	}
+	//	return null;
+	//}
 
 
 }
