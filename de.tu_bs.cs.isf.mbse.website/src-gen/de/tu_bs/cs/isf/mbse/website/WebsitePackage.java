@@ -8,10 +8,8 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-<<<<<<< HEAD
+
 import org.eclipse.emf.ecore.EStructuralFeature;
-=======
->>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 
 /**
  * <!-- begin-user-doc -->
@@ -53,11 +51,8 @@ public interface WebsitePackage extends EPackage {
 	 * @generated
 	 */
 	String eNS_PREFIX = "website";
-<<<<<<< HEAD
-	
+
 	int BOARD__PIECES = 1;
-=======
->>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 
 	/**
 	 * The singleton instance of the package.
@@ -880,13 +875,10 @@ public interface WebsitePackage extends EPackage {
 	 */
 	int COLOR = 11;
 
-<<<<<<< HEAD
 	int PIECE__BOARD = 0;
 
 	int PIECE__SQUARE = 0;
 
-=======
->>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 	/**
 	 * Returns the meta object for class '{@link de.tu_bs.cs.isf.mbse.website.Website <em>Website</em>}'.
 	 * <!-- begin-user-doc -->

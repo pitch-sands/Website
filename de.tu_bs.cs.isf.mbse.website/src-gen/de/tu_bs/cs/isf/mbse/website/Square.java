@@ -181,9 +181,6 @@ public interface Square extends EObject {
 	 */
 	int getOffsetY();
 
-<<<<<<< HEAD
 	Board getBoard();
 
-=======
->>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 } // Square
