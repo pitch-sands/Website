@@ -87,12 +87,14 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		RoundedRectangle roundedRectangle;
 		
 		{
+
+			System.out.println("look offsets: "+targetSquare.getOffsetX()+" and " + targetSquare.getOffsetY());
 			// create and set graphics algorithm
 			roundedRectangle = gaService.createRoundedRectangle(containerShape,5,5);
 			roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
 			roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
 			roundedRectangle.setLineWidth(2);
-			layoutService.setLocationAndSize(roundedRectangle, 
+			gaService.setLocationAndSize(roundedRectangle, 
 					FRAME_WIDTH + targetSquare.getOffsetX() * width, 
 					FRAME_HEIGHT + targetSquare.getOffsetY()* height, width, height);
 			
@@ -110,7 +112,7 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER ); 
 		// vertical alignment has as default value "center"
 		text.setFont(gaService.manageDefaultFont(getDiagram(), false, true));
-		layoutService.setLocationAndSize(text, 0, 0, width, 40);
+		layoutService.setLocationAndSize(text, 0, 0, width, 20);
 
 
 		// create link and wire it
