@@ -46,4 +46,9 @@ public interface ImageBox extends Widget {
 	 */
 	void setSource(String value);
 
+
+	void setBoard(Board board);
+
+	void setSquare(Square targetSquare);
+
 } // ImageBox

@@ -3,14 +3,26 @@ package de.tu_bs.cs.isf.mbse.website.graphiti.add;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
+<<<<<<< HEAD
+import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
+import org.eclipse.graphiti.mm.pictograms.BoxRelativeAnchor;
+=======
+import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
+import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
+<<<<<<< HEAD
+import org.eclipse.graphiti.services.ICreateService;
+=======
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.ColorConstant;
@@ -35,11 +47,21 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	public boolean canAdd(IAddContext context) {
 		// TODO Auto-generated method stub
 		//return false;
+<<<<<<< HEAD
+		if (context.getNewObject() instanceof ImageBox) {
+			return true;
+		}
+		return false;
+		
+		
+		
+=======
 
 		return context.getNewObject() instanceof ImageBox
 				&& context.getTargetContainer() instanceof Diagram
 				&& (context.getX()-50)%150 == 0 
 				&& (context.getY()-50)%100 == 0;
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 	}
 
 	@Override
@@ -49,7 +71,15 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		ImageBox addedImage = (ImageBox) context.getNewObject();
 		Diagram targetDiagram = (Diagram) context.getTargetContainer();
 		
+<<<<<<< HEAD
+		// Get the piece to add
+		ImageBox imagebox = (ImageBox) context.getNewObject();
+		
 		//Container shape with rounded rectangle
+		ICreateService createService = Graphiti.getCreateService();
+=======
+		//Container shape with rounded rectangle
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = 
 					peCreateService.createContainerShape(targetDiagram, true);
@@ -89,9 +119,24 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 			// create link and wire it
 			link(shape, addedImage);
 			
+<<<<<<< HEAD
+			peCreateService.createChopboxAnchor(shape);
+			BoxRelativeAnchor relativeAnchor = peCreateService.createBoxRelativeAnchor(shape);
+			relativeAnchor.setRelativeHeight(0.5d);
+			relativeAnchor.setRelativeWidth(0.5d);
+			relativeAnchor.setReferencedGraphicsAlgorithm(roundedRectangle);
+			relativeAnchor.setUseAnchorLocationAsConnectionEndpoint(true);
+			Ellipse anchorEllipse = createService.createEllipse(relativeAnchor);
+			gaService.setLocationAndSize(anchorEllipse, 25, 25, 0, 0);
 			
 		}
 		
+
+=======
+			
+		}
+		
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 		if (addedImage.eResource() == null) {
 			WebsiteModelUtil.INSTANCE.addWidget(addedImage);
 		}

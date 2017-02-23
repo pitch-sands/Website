@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -49,6 +51,8 @@ public interface WebsitePackage extends EPackage {
 	 * @generated
 	 */
 	String eNS_PREFIX = "website";
+
+	int BOARD__PIECES = 1;
 
 	/**
 	 * The singleton instance of the package.
@@ -872,6 +876,10 @@ public interface WebsitePackage extends EPackage {
 	 * @generated
 	 */
 	int COLOR = 11;
+
+	int PIECE__BOARD = 0;
+
+	int PIECE__SQUARE = 0;
 
 	/**
 	 * Returns the meta object for class '{@link de.tu_bs.cs.isf.mbse.website.Website <em>Website</em>}'.
