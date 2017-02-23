@@ -2,9 +2,13 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
+<<<<<<< HEAD
 import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.Square;
+=======
+import de.tu_bs.cs.isf.mbse.website.ImageBox;
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -61,10 +65,13 @@ public class ImageBoxImpl extends WidgetImpl implements ImageBox {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	
 	protected Square square;
 	
 	
+=======
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 	@Override
 	protected EClass eStaticClass() {
 		return WebsitePackage.Literals.IMAGE_BOX;
@@ -164,6 +171,7 @@ public class ImageBoxImpl extends WidgetImpl implements ImageBox {
 		result.append(')');
 		return result.toString();
 	}
+<<<<<<< HEAD
 	
 	public void setSquare(Square newSquare) {
 		if (newSquare != square) {
@@ -181,5 +189,7 @@ public class ImageBoxImpl extends WidgetImpl implements ImageBox {
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.PIECE__BOARD, newBoard, newBoard));
 	}
+=======
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 
 } //ImageBoxImpl

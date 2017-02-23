@@ -2,7 +2,10 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
+<<<<<<< HEAD
 import de.tu_bs.cs.isf.mbse.website.Board;
+=======
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.Files;
 import de.tu_bs.cs.isf.mbse.website.Ranks;
@@ -429,10 +432,13 @@ public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 		result.append(')');
 		return result.toString();
 	}
+<<<<<<< HEAD
 	public Board getBoard() {
 		if (eContainerFeatureID() != WebsitePackage.PIECE__BOARD) return null;
 		return (Board)eContainer();
 	}
 
+=======
+>>>>>>> d2e4768f87c9ce90ccfea2bdb3b29d87c4034556
 
 } //SquareImpl
