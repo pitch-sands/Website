@@ -9,8 +9,6 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -52,7 +50,7 @@ public interface WebsitePackage extends EPackage {
 	 */
 	String eNS_PREFIX = "website";
 
-	int BOARD__PIECES = 1;
+	
 
 	/**
 	 * The singleton instance of the package.
@@ -164,13 +162,22 @@ public interface WebsitePackage extends EPackage {
 	int WIDGET__COLUMN = 4;
 
 	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__SQUARE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Widget</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET_FEATURE_COUNT = 5;
+	int WIDGET_FEATURE_COUNT = 6;
 
 	/**
 	 * The operation id for the '<em>Get Rank</em>' operation.
@@ -253,6 +260,15 @@ public interface WebsitePackage extends EPackage {
 	 * @ordered
 	 */
 	int TEXT_BOX__COLUMN = WIDGET__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_BOX__SQUARE = WIDGET__SQUARE;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -355,6 +371,15 @@ public interface WebsitePackage extends EPackage {
 	int IMAGE_BOX__COLUMN = WIDGET__COLUMN;
 
 	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_BOX__SQUARE = WIDGET__SQUARE;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,6 +478,15 @@ public interface WebsitePackage extends EPackage {
 	 * @ordered
 	 */
 	int BUTTON_BOX__COLUMN = WIDGET__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON_BOX__SQUARE = WIDGET__SQUARE;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -564,6 +598,15 @@ public interface WebsitePackage extends EPackage {
 	int SEARCH_BOX__COLUMN = WIDGET__COLUMN;
 
 	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_BOX__SQUARE = WIDGET__SQUARE;
+
+	/**
 	 * The number of structural features of the '<em>Search Box</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -655,6 +698,15 @@ public interface WebsitePackage extends EPackage {
 	int MENUITEM_BOX__COLUMN = WIDGET__COLUMN;
 
 	/**
+	 * The feature id for the '<em><b>Square</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MENUITEM_BOX__SQUARE = WIDGET__SQUARE;
+
+	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -730,13 +782,22 @@ public interface WebsitePackage extends EPackage {
 	
 
 	/**
+	 * The feature id for the '<em><b>Widgets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOARD__WIDGETS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Board</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOARD_FEATURE_COUNT = 1;
+	int BOARD_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Get Square</em>' operation.
@@ -979,6 +1040,17 @@ public interface WebsitePackage extends EPackage {
 	EAttribute getWidget_Column();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.tu_bs.cs.isf.mbse.website.Widget#getSquare <em>Square</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Square</em>'.
+	 * @see de.tu_bs.cs.isf.mbse.website.Widget#getSquare()
+	 * @see #getWidget()
+	 * @generated
+	 */
+	EReference getWidget_Square();
+
+	/**
 	 * Returns the meta object for the '{@link de.tu_bs.cs.isf.mbse.website.Widget#getRank() <em>Get Rank</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1134,6 +1206,17 @@ public interface WebsitePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBoard_Squares();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.tu_bs.cs.isf.mbse.website.Board#getWidgets <em>Widgets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Widgets</em>'.
+	 * @see de.tu_bs.cs.isf.mbse.website.Board#getWidgets()
+	 * @see #getBoard()
+	 * @generated
+	 */
+	EReference getBoard_Widgets();
 
 	/**
 	 * Returns the meta object for the '{@link de.tu_bs.cs.isf.mbse.website.Board#getSquare(de.tu_bs.cs.isf.mbse.website.Ranks, de.tu_bs.cs.isf.mbse.website.Files) <em>Get Square</em>}' operation.
@@ -1360,6 +1443,14 @@ public interface WebsitePackage extends EPackage {
 		EAttribute WIDGET__COLUMN = eINSTANCE.getWidget_Column();
 
 		/**
+		 * The meta object literal for the '<em><b>Square</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WIDGET__SQUARE = eINSTANCE.getWidget_Square();
+
+		/**
 		 * The meta object literal for the '<em><b>Get Rank</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1490,6 +1581,14 @@ public interface WebsitePackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOARD__SQUARES = eINSTANCE.getBoard_Squares();
+
+		/**
+		 * The meta object literal for the '<em><b>Widgets</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOARD__WIDGETS = eINSTANCE.getBoard_Widgets();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Square</b></em>' operation.

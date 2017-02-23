@@ -2,13 +2,16 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
-import de.tu_bs.cs.isf.mbse.website.Color;
-import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.Board;
+import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.Files;
 import de.tu_bs.cs.isf.mbse.website.Ranks;
 import de.tu_bs.cs.isf.mbse.website.Square;
+import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.WebsitePackage;
+
+import de.tu_bs.cs.isf.mbse.website.Widget;
+
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -35,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.BoardImpl#getSquares <em>Squares</em>}</li>
+ *   <li>{@link de.tu_bs.cs.isf.mbse.website.impl.BoardImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,13 +55,22 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 	protected EList<Square> squares;
 
 	/**
+	 * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWidgets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Widget> widgets;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected BoardImpl() {
 		super();
-		// Add squares
 		for (int i = 0; i < 64; i++) {
 			Square square = WebsiteFactory.eINSTANCE.createSquare();
 
@@ -129,6 +142,18 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Widget> getWidgets() {
+		if (widgets == null) {
+			widgets = new EObjectContainmentEList<Widget>(Widget.class, this, WebsitePackage.BOARD__WIDGETS);
+		}
+		return widgets;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Square getSquare(Ranks rank, Files file) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -145,6 +170,8 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 		switch (featureID) {
 			case WebsitePackage.BOARD__SQUARES:
 				return ((InternalEList<?>)getSquares()).basicRemove(otherEnd, msgs);
+			case WebsitePackage.BOARD__WIDGETS:
+				return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -159,6 +186,8 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 		switch (featureID) {
 			case WebsitePackage.BOARD__SQUARES:
 				return getSquares();
+			case WebsitePackage.BOARD__WIDGETS:
+				return getWidgets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,6 +205,10 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 				getSquares().clear();
 				getSquares().addAll((Collection<? extends Square>)newValue);
 				return;
+			case WebsitePackage.BOARD__WIDGETS:
+				getWidgets().clear();
+				getWidgets().addAll((Collection<? extends Widget>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -191,6 +224,9 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 			case WebsitePackage.BOARD__SQUARES:
 				getSquares().clear();
 				return;
+			case WebsitePackage.BOARD__WIDGETS:
+				getWidgets().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -205,6 +241,8 @@ public class BoardImpl extends MinimalEObjectImpl.Container implements Board {
 		switch (featureID) {
 			case WebsitePackage.BOARD__SQUARES:
 				return squares != null && !squares.isEmpty();
+			case WebsitePackage.BOARD__WIDGETS:
+				return widgets != null && !widgets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

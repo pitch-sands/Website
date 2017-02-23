@@ -78,6 +78,7 @@ public class BoardItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(WebsitePackage.Literals.BOARD__SQUARES);
+			childrenFeatures.add(WebsitePackage.Literals.BOARD__WIDGETS);
 		}
 		return childrenFeatures;
 	}
@@ -131,6 +132,7 @@ public class BoardItemProvider
 
 		switch (notification.getFeatureID(Board.class)) {
 			case WebsitePackage.BOARD__SQUARES:
+			case WebsitePackage.BOARD__WIDGETS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -152,6 +154,36 @@ public class BoardItemProvider
 			(createChildParameter
 				(WebsitePackage.Literals.BOARD__SQUARES,
 				 WebsiteFactory.eINSTANCE.createSquare()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createWidget()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createTextBox()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createImageBox()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createButtonBox()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createSearchBox()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(WebsitePackage.Literals.BOARD__WIDGETS,
+				 WebsiteFactory.eINSTANCE.createMenuitemBox()));
 	}
 
 	/**

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.tu_bs.cs.isf.mbse.website.Board#getSquares <em>Squares</em>}</li>
+ *   <li>{@link de.tu_bs.cs.isf.mbse.website.Board#getWidgets <em>Widgets</em>}</li>
  * </ul>
  *
  * @see de.tu_bs.cs.isf.mbse.website.WebsitePackage#getBoard()
@@ -38,6 +39,22 @@ public interface Board extends EObject {
 	 * @generated
 	 */
 	EList<Square> getSquares();
+
+	/**
+	 * Returns the value of the '<em><b>Widgets</b></em>' containment reference list.
+	 * The list contents are of type {@link de.tu_bs.cs.isf.mbse.website.Widget}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Widgets</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Widgets</em>' containment reference list.
+	 * @see de.tu_bs.cs.isf.mbse.website.WebsitePackage#getBoard_Widgets()
+	 * @model containment="true" upper="64"
+	 * @generated
+	 */
+	EList<Widget> getWidgets();
 
 	/**
 	 * <!-- begin-user-doc -->

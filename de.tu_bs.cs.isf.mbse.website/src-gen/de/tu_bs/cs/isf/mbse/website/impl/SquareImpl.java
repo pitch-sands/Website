@@ -2,7 +2,6 @@
  */
 package de.tu_bs.cs.isf.mbse.website.impl;
 
-import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.Files;
 import de.tu_bs.cs.isf.mbse.website.Ranks;
@@ -20,9 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 
 /**
@@ -42,7 +39,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public class SquareImpl extends EObjectImpl implements Square {
+public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -267,11 +264,33 @@ public class SquareImpl extends EObjectImpl implements Square {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWidget(Widget newWidget) {
+	public NotificationChain basicSetWidget(Widget newWidget, NotificationChain msgs) {
 		Widget oldWidget = widget;
 		widget = newWidget;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, oldWidget, widget));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, oldWidget, newWidget);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWidget(Widget newWidget) {
+		if (newWidget != widget) {
+			NotificationChain msgs = null;
+			if (widget != null)
+				msgs = ((InternalEObject)widget).eInverseRemove(this, WebsitePackage.WIDGET__SQUARE, Widget.class, msgs);
+			if (newWidget != null)
+				msgs = ((InternalEObject)newWidget).eInverseAdd(this, WebsitePackage.WIDGET__SQUARE, Widget.class, msgs);
+			msgs = basicSetWidget(newWidget, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.SQUARE__WIDGET, newWidget, newWidget));
 	}
 
 	/**
@@ -282,7 +301,7 @@ public class SquareImpl extends EObjectImpl implements Square {
 	public int getOffsetX() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		return getFile().getValue() - 1;
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -293,7 +312,37 @@ public class SquareImpl extends EObjectImpl implements Square {
 	public int getOffsetY() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		return 8 - getRank().getValue();
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WebsitePackage.SQUARE__WIDGET:
+				if (widget != null)
+					msgs = ((InternalEObject)widget).eInverseRemove(this, WebsitePackage.WIDGET__SQUARE, Widget.class, msgs);
+				return basicSetWidget((Widget)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WebsitePackage.SQUARE__WIDGET:
+				return basicSetWidget(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -432,6 +481,10 @@ public class SquareImpl extends EObjectImpl implements Square {
 		result.append(')');
 		return result.toString();
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 
 
 	

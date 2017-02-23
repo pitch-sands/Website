@@ -142,6 +142,7 @@ public interface Square extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Widget</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link de.tu_bs.cs.isf.mbse.website.Widget#getSquare <em>Square</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Widget</em>' reference isn't clear,
@@ -151,7 +152,8 @@ public interface Square extends EObject {
 	 * @return the value of the '<em>Widget</em>' reference.
 	 * @see #setWidget(Widget)
 	 * @see de.tu_bs.cs.isf.mbse.website.WebsitePackage#getSquare_Widget()
-	 * @model
+	 * @see de.tu_bs.cs.isf.mbse.website.Widget#getSquare
+	 * @model opposite="square"
 	 * @generated
 	 */
 	Widget getWidget();
@@ -182,5 +184,11 @@ public interface Square extends EObject {
 	 */
 	int getOffsetY();
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 
 } // Square
