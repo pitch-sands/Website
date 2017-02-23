@@ -16,6 +16,8 @@ import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.IColorConstant;
 
 import de.tu_bs.cs.isf.mbse.website.SearchBox;
+import de.tu_bs.cs.isf.mbse.website.TextBox;
+import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
 public class AddSearchBoxFeature extends AbstractAddFeature {
@@ -30,16 +32,22 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 	
 	@Override
 	public boolean canAdd(IAddContext context) {
-		return context.getNewObject() instanceof SearchBox
-				&& context.getTargetContainer() instanceof Diagram
-				&& (context.getX()-50)%150 == 0 
-				&& (context.getY()-50)%100 == 0;
+		if (context.getNewObject() instanceof SearchBox) {
+			Widget widget = (Widget)context.getNewObject();
+			if (context.getTargetContainer() instanceof Diagram == false) {
+				System.out.println("square: "+widget.getSquare());
+				// Add new board only in case of an empty diagram
+				return context.getTargetContainer().getChildren().size() == 0;
+			}
+		}
+		
+		return false;
 	}
 
 	@Override
 	public PictogramElement add(IAddContext context) {
 		SearchBox addedState = (SearchBox) context.getNewObject();
-		Diagram targetDiagram = (Diagram) context.getTargetContainer();
+		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
 		// CONTAINER SHAPE WITH ROUNDED RECTANGLE
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
@@ -48,7 +56,7 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 
 		// define a default size for the shape
 		int width = 100;
-		int height = 50; 
+		int height = 100; 
 		IGaService gaService = Graphiti.getGaService();
 		RoundedRectangle roundedRectangle; // need to access it later
 
@@ -58,8 +66,7 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 			roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
 			roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
 			roundedRectangle.setLineWidth(2);
-			gaService.setLocationAndSize(roundedRectangle, 
-					context.getX(), context.getY(), width, height);
+			gaService.setLocationAndSize(roundedRectangle, 0, 0, width, height);
 			
 			link(containerShape, addedState);
 		}

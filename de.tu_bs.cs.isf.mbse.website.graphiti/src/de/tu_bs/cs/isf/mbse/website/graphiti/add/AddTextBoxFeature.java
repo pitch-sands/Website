@@ -10,6 +10,8 @@ import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
+import org.eclipse.graphiti.mm.pictograms.Anchor;
+import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -19,7 +21,7 @@ import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.IColorConstant;
 
-
+import de.tu_bs.cs.isf.mbse.website.Square;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
@@ -50,6 +52,8 @@ public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 
 	@Override
 	public PictogramElement add(IAddContext context) {
+		
+		// Get the image to add
 		TextBox addedState = (TextBox) context.getNewObject();
 		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
@@ -70,8 +74,7 @@ public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 			roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
 			roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
 			roundedRectangle.setLineWidth(2);
-			gaService.setLocationAndSize(roundedRectangle, 
-					context.getX(), context.getY(), width, height);
+			gaService.setLocationAndSize(roundedRectangle, 0, 0, width, height);
 			
 			link(containerShape, addedState);
 		}

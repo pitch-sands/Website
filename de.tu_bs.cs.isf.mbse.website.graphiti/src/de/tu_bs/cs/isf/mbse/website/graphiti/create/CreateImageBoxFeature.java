@@ -3,6 +3,7 @@ package de.tu_bs.cs.isf.mbse.website.graphiti.create;
 import de.tu_bs.cs.isf.mbse.website.Square;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.Board;
+import de.tu_bs.cs.isf.mbse.website.Color;
 
 import java.util.List;
 
@@ -38,27 +39,31 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 	public boolean canCreate(ICreateContext context) {
 		// TODO Auto-generated method stub
 		//return false;
-
-    	System.out.println("canCreate:"+ context.getTargetContainer().toString());
-
-		return context.getTargetContainer() instanceof ContainerShape;
+		//if targetSquare is not black
+		// Add new board only in case of an empty diagram
+		AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
+		Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
+		if(targetSquare.getColor() != Color.BLUE){
+			return context.getTargetContainer() instanceof ContainerShape;
+		}
+		return false;
 	}
 
 	@Override
 	public Object[] create(ICreateContext context) {
 
 
-		// Get the chess board
-		//Board board = getBoard(context);
+		// Get the target square
 		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
 
-        Square targetSquare = getSquare(context.getTargetContainer().getAnchors().get(0));
+		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
+		AnchorContainer parent = anchor.getParent();
+        Square obj = (Square) getBusinessObjectForPictogramElement(parent);
 	
-		//Square square = (Square) context.getTargetContainer();
 		ImageBox newimage= WebsiteFactory.eINSTANCE.createImageBox();
 
-		newimage.setColumn(targetSquare.getOffsetX());
-		newimage.setRow(targetSquare.getOffsetY());
+		newimage.setColumn(obj.getOffsetX());
+		newimage.setRow(obj.getOffsetY());
 
 		newimage.setName("Image");
 		/*
@@ -78,17 +83,5 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
         return new Object[] { newimage };
 	}
 	
-	private Square getSquare(Anchor anchor) {
-		// Try to find a square for the given anchor
-		if (anchor != null) {
-			AnchorContainer parent = anchor.getParent();
-			Object obj = getBusinessObjectForPictogramElement(parent);
-			if (obj instanceof Square) {
-				// The shape of the anchor represents a square
-				return (Square) obj;
-			} 
-		}
-		return null;
-	}
 
 }

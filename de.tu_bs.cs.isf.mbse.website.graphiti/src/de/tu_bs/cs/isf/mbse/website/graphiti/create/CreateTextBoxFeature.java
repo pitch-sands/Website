@@ -6,10 +6,13 @@ import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICreateContext;
 
 import org.eclipse.graphiti.features.impl.AbstractCreateFeature;
+import org.eclipse.graphiti.mm.pictograms.Anchor;
+import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import de.tu_bs.cs.isf.mbse.website.Square;
 import de.tu_bs.cs.isf.mbse.website.Board;
+import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
@@ -22,17 +25,32 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     }
  
     public boolean canCreate(ICreateContext context) {
-    	System.out.println("canCreate:"+ context.getTargetContainer().toString());
-    	return context.getTargetContainer() instanceof ContainerShape;
+		//if targetSquare is not black
+		// Add new board only in case of an empty diagram
+		AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
+    	Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
+		if(targetSquare.getColor() != Color.BLUE){
+			return context.getTargetContainer() instanceof ContainerShape;
+		}
+		return false;
     }
  
   
     public Object[] create(ICreateContext context) {
+    	
+    	// Get the target square
+		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
+
+		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
+		AnchorContainer parent = anchor.getParent();
+        Square obj = (Square) getBusinessObjectForPictogramElement(parent);
+    	
     	TextBox newState= WebsiteFactory.eINSTANCE.createTextBox();
         
         newState.setContent("Write your content here.");
-        newState.setColumn(context.getX());
-        newState.setRow(context.getY());
+
+        newState.setColumn(obj.getOffsetX());
+        newState.setRow(obj.getOffsetY());
         getDiagram().eResource().getContents().add(newState);
         
         

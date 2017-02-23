@@ -28,12 +28,13 @@ import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
+import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 
 public class AddImageBoxFeature extends AbstractAddFeature {
 
-	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.BLACK;
+	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.ORANGE;
 	private static final IColorConstant STATE_FOREGROUND = new ColorConstant(98,131,167);
 	private static final IColorConstant STATE_BACKGROUND = new ColorConstant(187,218,247); 
 
@@ -47,14 +48,10 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof ImageBox) {
-			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println(context.getTargetContainer());
-				System.out.println("lalatrue"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
-				// Add new board only in case of an empty diagram
+			if (context.getTargetContainer() instanceof Diagram == false) {	
 				return context.getTargetContainer().getChildren().size() == 0;
 			}
 		}
-		System.out.println("lalafalse"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
 		return false;
 
 	}
@@ -62,18 +59,12 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	@Override
 	public PictogramElement add(IAddContext context) {
 
-		// The end square for the current move
-		System.out.println(context.getTargetContainer().getAnchors());
-		Square targetSquare = getSquare(context.getTargetContainer().getAnchors().get(0));
-
-		System.out.println("look "+targetSquare.getRank().getValue()+" and " + targetSquare.getFile().getValue());
 		
-		// Get the piece to add
+		// Get the image to add
 		ImageBox addedImage = (ImageBox) context.getNewObject();
 		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
 		//Container shape with rounded rectangle
-
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		IGaLayoutService layoutService = Graphiti.getGaLayoutService();
 		ContainerShape containerShape = 
@@ -88,21 +79,25 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		
 		{
 
-			System.out.println("look offsets: "+targetSquare.getOffsetX()+" and " + targetSquare.getOffsetY());
 			// create and set graphics algorithm
 			roundedRectangle = gaService.createRoundedRectangle(containerShape,5,5);
 			roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
 			roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
 			roundedRectangle.setLineWidth(2);
+			/*
 			gaService.setLocationAndSize(roundedRectangle, 
-					FRAME_WIDTH + targetSquare.getOffsetX() * width, 
-					FRAME_HEIGHT + targetSquare.getOffsetY()* height, width, height);
-			
+					targetSquare.getOffsetX() * width, 
+					targetSquare.getOffsetY()* height, width, height);
+					*/
+			gaService.setLocationAndSize(roundedRectangle, 
+					0, 0, width, height);
+			System.out.println("rectangle x: "+roundedRectangle.getX()+" and y" + roundedRectangle.getY());
 			link(containerShape, addedImage);
 		}
 
 		// SHAPE WITH TEXT
 	
+		
 		// create shape for text
 		Shape shape = peCreateService.createShape(containerShape, false);
 
@@ -117,6 +112,7 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 
 		// create link and wire it
 		link(shape, addedImage);
+		
 		/*
 		createService.createChopboxAnchor(containerShape);
 		BoxRelativeAnchor relativeAnchor = peCreateService.createBoxRelativeAnchor(containerShape);
@@ -142,17 +138,5 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		return containerShape;
 	}
 	
-	private Square getSquare(Anchor anchor) {
-		// Try to find a square for the given anchor
-		if (anchor != null) {
-			AnchorContainer parent = anchor.getParent();
-			Object obj = getBusinessObjectForPictogramElement(parent);
-			if (obj instanceof Square) {
-				// The shape of the anchor represents a square
-				return (Square) obj;
-			} 
-		}
-		return null;
-	}
 }
 
