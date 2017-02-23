@@ -432,10 +432,6 @@ public class SquareImpl extends EObjectImpl implements Square {
 		result.append(')');
 		return result.toString();
 	}
-	public Board getBoard() {
-		if (eContainerFeatureID() != WebsitePackage.PIECE__BOARD) return null;
-		return (Board)eContainer();
-	}
 
 
 	
