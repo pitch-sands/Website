@@ -109,7 +109,7 @@ public class AddBoardFeature extends AbstractAddShapeFeature {
 		link(outerContainerShape, board);
 
 		// Add the 64 single squares to the board
-		System.out.println(board.getSquares());
+		System.out.println("there are " + board.getSquares().size() + "squares");
 		for (Square square : board.getSquares()) {
 			// Visualise as a square at the correct location
 			ContainerShape squareShape = createService.createContainerShape(outerContainerShape, true);

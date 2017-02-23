@@ -38,43 +38,25 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 	public boolean canCreate(ICreateContext context) {
 		// TODO Auto-generated method stub
 		//return false;
-<<<<<<< HEAD
-    	System.out.println("canCreate:"+ context.getTargetContainer().toString());
-=======
 
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
+    	System.out.println("canCreate:"+ context.getTargetContainer().toString());
+
 		return context.getTargetContainer() instanceof ContainerShape;
 	}
 
 	@Override
 	public Object[] create(ICreateContext context) {
-<<<<<<< HEAD
-=======
+
 
 		// Get the chess board
 		//Board board = getBoard(context);
-		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());
-		Square targetSquare = (Square) targetBO;
-		
-		
-		
-		ImageBox imagebox = WebsiteFactory.eINSTANCE.createImageBox();
-		imagebox.eResource().getContents().add(imagebox);
-		//imagebox.setBoard(board);
-		imagebox.setSquare(targetSquare);
-		
-		
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
-		
-		//Square square = (Square) context.getTargetContainer();
-		ImageBox newimage= WebsiteFactory.eINSTANCE.createImageBox();
-        
-		/*
-		*/
+		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
 
         Square targetSquare = getSquare(context.getTargetContainer().getAnchors().get(0));
+	
+		//Square square = (Square) context.getTargetContainer();
+		ImageBox newimage= WebsiteFactory.eINSTANCE.createImageBox();
 
-<<<<<<< HEAD
 		newimage.setColumn(targetSquare.getOffsetX());
 		newimage.setRow(targetSquare.getOffsetY());
 
@@ -108,17 +90,5 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 		}
 		return null;
 	}
-=======
-	//private Board getBoard(ICreateContext context) {
-	//	ContainerShape targetContainer = context.getTargetContainer();
-	//	Object bo = getBusinessObjectForPictogramElement(targetContainer);
-	//	if (bo instanceof Board) {
-	//	return (Board) bo;
-	//	} else if (bo instanceof Square) {
-	//		return ((Square) bo).getBoard();
-	//	}
-	//	return null;
-	//}
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 
 }

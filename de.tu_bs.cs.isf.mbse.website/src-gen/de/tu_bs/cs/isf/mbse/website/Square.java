@@ -184,11 +184,5 @@ public interface Square extends EObject {
 	 */
 	int getOffsetY();
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 
 } // Square

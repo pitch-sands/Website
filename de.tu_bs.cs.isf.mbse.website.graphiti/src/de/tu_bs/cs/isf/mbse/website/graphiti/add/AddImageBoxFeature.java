@@ -4,10 +4,6 @@ import de.tu_bs.cs.isf.mbse.website.Square;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
-<<<<<<< HEAD
-=======
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.Rectangle;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
@@ -16,28 +12,16 @@ import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.BoxRelativeAnchor;
-<<<<<<< HEAD
 import org.eclipse.graphiti.mm.pictograms.Connection;
-=======
-
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
 
-<<<<<<< HEAD
-import org.eclipse.graphiti.mm.pictograms.Anchor;
-import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
-
 import org.eclipse.graphiti.services.ICreateService;
 import org.eclipse.graphiti.services.IGaLayoutService;
-=======
-import org.eclipse.graphiti.services.ICreateService;
 
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.ColorConstant;
@@ -62,12 +46,6 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	
 	@Override
 	public boolean canAdd(IAddContext context) {
-<<<<<<< HEAD
-=======
-		// TODO Auto-generated method stub
-		//return false;
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 		if (context.getNewObject() instanceof ImageBox) {
 			if (context.getTargetContainer() instanceof Diagram == false) {
 				System.out.println(context.getTargetContainer());
@@ -78,21 +56,11 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		}
 		System.out.println("lalafalse"+(context.getTargetContainer() instanceof Diagram) +"can add:"+ context.getTargetContainer().getChildren().size());
 		return false;
-		
-<<<<<<< HEAD
-=======
-		
-		
 
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 	}
 
 	@Override
 	public PictogramElement add(IAddContext context) {
-		// Get the Graphiti services
-		ICreateService createService = Graphiti.getCreateService();
-		IGaLayoutService layoutService = Graphiti.getGaLayoutService();
 
 		// The end square for the current move
 		System.out.println(context.getTargetContainer().getAnchors());
@@ -100,28 +68,16 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 
 		System.out.println("look "+targetSquare.getRank().getValue()+" and " + targetSquare.getFile().getValue());
 		
-<<<<<<< HEAD
-=======
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 		// Get the piece to add
 		ImageBox addedImage = (ImageBox) context.getNewObject();
-		
-		
-		// Create the visualisation of the board as a square
-		ContainerShape outerContainerShape = createService.createContainerShape(getDiagram(), true);
-				
-		//Container shape with rounded rectangle
-<<<<<<< HEAD
-=======
-		ICreateService createService = Graphiti.getCreateService();
+		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
 		//Container shape with rounded rectangle
 
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
+		IGaLayoutService layoutService = Graphiti.getGaLayoutService();
 		ContainerShape containerShape = 
-					peCreateService.createContainerShape(outerContainerShape, true);
+					peCreateService.createContainerShape(targetDiagram, true);
 		
 		//define a default size for the shape
 		int width = 100;
@@ -130,17 +86,18 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		IGaService gaService = Graphiti.getGaService();
 		RoundedRectangle roundedRectangle;
 		
-		// create and set graphics algorithm
-		roundedRectangle = createService.createRoundedRectangle(containerShape,5,5);
-		roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
-		roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
-		roundedRectangle.setLineWidth(2);
-		layoutService.setLocationAndSize(roundedRectangle, 
-				FRAME_WIDTH + targetSquare.getOffsetX() * width, 
-				FRAME_HEIGHT + targetSquare.getOffsetY()* height, width, height);
-		
-		link(containerShape, addedImage);
-	
+		{
+			// create and set graphics algorithm
+			roundedRectangle = gaService.createRoundedRectangle(containerShape,5,5);
+			roundedRectangle.setForeground(manageColor(STATE_FOREGROUND));
+			roundedRectangle.setBackground(manageColor(STATE_BACKGROUND));
+			roundedRectangle.setLineWidth(2);
+			layoutService.setLocationAndSize(roundedRectangle, 
+					FRAME_WIDTH + targetSquare.getOffsetX() * width, 
+					FRAME_HEIGHT + targetSquare.getOffsetY()* height, width, height);
+			
+			link(containerShape, addedImage);
+		}
 
 		// SHAPE WITH TEXT
 	
@@ -155,10 +112,10 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		text.setFont(gaService.manageDefaultFont(getDiagram(), false, true));
 		layoutService.setLocationAndSize(text, 0, 0, width, 40);
 
-<<<<<<< HEAD
+
 		// create link and wire it
 		link(shape, addedImage);
-		
+		/*
 		createService.createChopboxAnchor(containerShape);
 		BoxRelativeAnchor relativeAnchor = peCreateService.createBoxRelativeAnchor(containerShape);
 		relativeAnchor.setRelativeHeight(0.5d);
@@ -167,34 +124,18 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 		relativeAnchor.setUseAnchorLocationAsConnectionEndpoint(true);
 		Ellipse anchorEllipse = createService.createEllipse(relativeAnchor);
 		gaService.setLocationAndSize(anchorEllipse, 25, 25, 0, 0);
-			
+		*/
 		
 		if (addedImage.eResource() == null) {
 			WebsiteModelUtil.INSTANCE.addWidget(addedImage);
 		}
-		
-=======
-			// create link and wire it
-			link(shape, addedImage);
-			
-
-			peCreateService.createChopboxAnchor(shape);
-			BoxRelativeAnchor relativeAnchor = peCreateService.createBoxRelativeAnchor(shape);
-			relativeAnchor.setRelativeHeight(0.5d);
-			relativeAnchor.setRelativeWidth(0.5d);
-			relativeAnchor.setReferencedGraphicsAlgorithm(roundedRectangle);
-			relativeAnchor.setUseAnchorLocationAsConnectionEndpoint(true);
-			Ellipse anchorEllipse = createService.createEllipse(relativeAnchor);
-			gaService.setLocationAndSize(anchorEllipse, 25, 25, 0, 0);
-			
-		}
-		
-
-
+		// add a chopbox anchor to the shape 
+        peCreateService.createChopboxAnchor(containerShape);
+  
+        // call the layout feature
+        layoutPictogramElement(containerShape);
 			
 		
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
 
 		return containerShape;
 	}

@@ -301,7 +301,7 @@ public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 	public int getOffsetX() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getFile().getValue() - 1;
 	}
 
 	/**
@@ -312,7 +312,7 @@ public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 	public int getOffsetY() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return 8 - getRank().getValue();
 	}
 
 	/**
@@ -481,14 +481,6 @@ public class SquareImpl extends MinimalEObjectImpl.Container implements Square {
 		result.append(')');
 		return result.toString();
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> ae328cab1f9642e5b28336b999f856219880c974
-
-
-	
-
 	
 
 } //SquareImpl
