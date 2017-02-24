@@ -25,4 +25,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>de.tu_bs.cs.isf.mbse.website</name>
+			<type>2</type>
+			<location>/Users/cwp/Documents/website/de.tu_bs.cs.isf.mbse.website</location>
+		</link>
+	</linkedResources>
 </projectDescription>

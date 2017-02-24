@@ -9,7 +9,7 @@ import org.eclipse.graphiti.tb.ContextButtonEntry;
 import org.eclipse.graphiti.tb.DefaultToolBehaviorProvider;
 import org.eclipse.graphiti.tb.IContextButtonPadData;
 
-import de.tu_bs.cs.isf.mbse.website.ImageBox;
+
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyImageProvider;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
 

@@ -8,16 +8,17 @@ import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 
 
-import de.tu_bs.cs.isf.mbse.website.ButtonBox;
+
 import de.tu_bs.cs.isf.mbse.website.Color;
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
 import de.tu_bs.cs.isf.mbse.website.Square;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
-public class CreateButtonBoxFeature extends AbstractCreateFeature{
+public class CreateMenuItemBoxFeature extends AbstractCreateFeature{
 
-	public CreateButtonBoxFeature(IFeatureProvider fp) {
-		super(fp, "ButtonBox", "Create ButtonBox");
+	public CreateMenuItemBoxFeature(IFeatureProvider fp) {
+		super(fp, "MenuitemBox", "Create MenuitemBox");
 	}
 	
 	public boolean canCreate(ICreateContext context) {
@@ -25,7 +26,7 @@ public class CreateButtonBoxFeature extends AbstractCreateFeature{
 				// Add new board only in case of an empty diagram
 				AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
 		    	Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
-				if(targetSquare.getColor() != Color.BLUE){
+				if(targetSquare.getColor() == Color.BLUE){
 					return context.getTargetContainer() instanceof ContainerShape;
 				}
 				return false;
@@ -40,10 +41,11 @@ public class CreateButtonBoxFeature extends AbstractCreateFeature{
 		AnchorContainer parent = anchor.getParent();
         Square obj = (Square) getBusinessObjectForPictogramElement(parent);
     	
-    	ButtonBox newState= WebsiteFactory.eINSTANCE.createButtonBox();
-    	newState.setContent("Write your button name here.");
+        MenuitemBox newState= WebsiteFactory.eINSTANCE.createMenuitemBox();
+    	newState.setContent("Write your Menuitem name here.");
         newState.setColumn(obj.getOffsetX()+1);
         newState.setRow(obj.getOffsetY()+1);
+        System.out.println("menu column: " + newState.getColumn() + " and row: " + newState.getRow());
         getDiagram().eResource().getContents().add(newState);
         
         

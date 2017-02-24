@@ -72,14 +72,14 @@ public class AddBoardFeature extends AbstractAddShapeFeature {
 			setLayoutForBorderTexts(layoutService, text);
 			layoutService.setLocationAndSize(text, FRAME_WIDTH + (file.getValue() - 1) * SQUARE_SIZE, 0, SQUARE_SIZE,
 					FRAME_HEIGHT);
-			text.setValue(file.getLiteral());
+			text.setValue(Integer.toString(file.getValue()));
 
 			// Display file names at bottom
 			text = createService.createText(outerRectangle);
 			setLayoutForBorderTexts(layoutService, text);
 			layoutService.setLocationAndSize(text, FRAME_WIDTH + (file.getValue() - 1) * SQUARE_SIZE,
 					FRAME_HEIGHT + BOARD_SIZE, SQUARE_SIZE, FRAME_HEIGHT);
-			text.setValue(file.getLiteral());
+			text.setValue(Integer.toString(file.getValue()));
 		}
 		for (Ranks rank : Ranks.values()) {
 			if (Ranks.NONE.equals(rank)) {
@@ -91,14 +91,18 @@ public class AddBoardFeature extends AbstractAddShapeFeature {
 			setLayoutForBorderTexts(layoutService, text);
 			layoutService.setLocationAndSize(text, 0, FRAME_WIDTH + (8 - rank.getValue()) * SQUARE_SIZE, FRAME_WIDTH,
 					SQUARE_SIZE);
-			text.setValue(Integer.toString(rank.getValue()));
+			int leftvalue = 9 - rank.getValue();
+			text.setValue(Integer.toString(leftvalue));
 
 			// Display rank names at right side
 			text = createService.createText(outerRectangle);
 			setLayoutForBorderTexts(layoutService, text);
 			layoutService.setLocationAndSize(text, FRAME_WIDTH + BOARD_SIZE,
 					FRAME_WIDTH + (8 - rank.getValue()) * SQUARE_SIZE, FRAME_WIDTH, SQUARE_SIZE);
-			text.setValue(Integer.toString(rank.getValue()));
+
+			int rightvalue = 9 - rank.getValue();
+			text.setValue(Integer.toString(rightvalue));
+			
 		}
 
 		Rectangle boardRectangle = createService.createRectangle(outerRectangle);

@@ -2,9 +2,9 @@ package de.tu_bs.cs.isf.mbse.website.graphiti.create;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import de.tu_bs.cs.isf.mbse.website.Board;
-import de.tu_bs.cs.isf.mbse.website.ImageBox;
+
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
-import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
+
 
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICreateContext;

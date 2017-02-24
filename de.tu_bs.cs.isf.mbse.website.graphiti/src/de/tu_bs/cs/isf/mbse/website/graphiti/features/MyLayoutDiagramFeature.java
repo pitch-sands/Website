@@ -59,8 +59,8 @@ public class MyLayoutDiagramFeature extends AbstractCustomFeature {
 
 	private Diagram mapGraphCoordinatesToDiagram(CompoundDirectedGraph graph) {
 		NodeList myNodes = new NodeList();
-		myNodes.addAll(graph.nodes);
-		myNodes.addAll(graph.subgraphs);
+		//myNodes.addAll(graph.nodes);
+		//myNodes.addAll(graph.subgraphs);
 		for (Object object : myNodes) {
 			Node node = (Node) object;
 			Shape shape = (Shape) node.data;
@@ -89,7 +89,7 @@ public class MyLayoutDiagramFeature extends AbstractCustomFeature {
 			node.height = ga.getHeight();
 			node.data = shape;
 			shapeToNode.put(shape, node);
-			nodeList.add(node);
+			//nodeList.add(node);
 		}
 		EList<Connection> connections = d.getConnections();
 		for (Connection connection : connections) {
@@ -97,7 +97,7 @@ public class MyLayoutDiagramFeature extends AbstractCustomFeature {
 			AnchorContainer target = connection.getEnd().getParent();
 			Edge edge = new Edge(shapeToNode.get(source), shapeToNode.get(target));
 			edge.data = connection;
-			edgeList.add(edge);
+			//edgeList.add(edge);
 		}
 		dg.nodes = nodeList;
 		dg.edges = edgeList;

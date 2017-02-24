@@ -189,17 +189,16 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	 */
 
 		public Square getSquare() {
-			if (square != null && square.eIsProxy()) {
-				InternalEObject oldSquare = (InternalEObject) square;
-				square = (Square) eResolveProxy(oldSquare);
-				if (square != oldSquare) {
-					if (eNotificationRequired())
-						eNotify(new ENotificationImpl(this, Notification.RESOLVE, WebsitePackage.WIDGET__SQUARE, oldSquare,
-								square));
-				}
+		if (square != null && square.eIsProxy()) {
+			InternalEObject oldSquare = (InternalEObject)square;
+			square = (Square)eResolveProxy(oldSquare);
+			if (square != oldSquare) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WebsitePackage.WIDGET__SQUARE, oldSquare, square));
 			}
-			return square;
 		}
+		return square;
+	}
 		
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -220,19 +219,14 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSquare(Square newSquare, NotificationChain msgs) {
 		Square oldSquare = square;
 		square = newSquare;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.WIDGET__SQUARE,
-					oldSquare, newSquare);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WebsitePackage.WIDGET__SQUARE, oldSquare, newSquare);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -244,20 +238,19 @@ public class WidgetImpl extends MinimalEObjectImpl.Container implements Widget {
 	 */
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setSquare(Square newSquare) {
 		if (newSquare != square) {
 			NotificationChain msgs = null;
 			if (square != null)
-				msgs = ((InternalEObject) square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+				msgs = ((InternalEObject)square).eInverseRemove(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
 			if (newSquare != null)
-				msgs = ((InternalEObject) newSquare).eInverseAdd(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
+				msgs = ((InternalEObject)newSquare).eInverseAdd(this, WebsitePackage.SQUARE__WIDGET, Square.class, msgs);
 			msgs = basicSetSquare(newSquare, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, WebsitePackage.WIDGET__SQUARE, newSquare, newSquare));
 	}
 

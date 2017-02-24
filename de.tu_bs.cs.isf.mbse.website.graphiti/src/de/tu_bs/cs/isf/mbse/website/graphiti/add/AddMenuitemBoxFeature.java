@@ -16,24 +16,23 @@ import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.IColorConstant;
 
-import de.tu_bs.cs.isf.mbse.website.ButtonBox;
-
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
 import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
-public class AddButtonBoxFeature extends AbstractAddFeature {
+public class AddMenuitemBoxFeature extends AbstractAddFeature {
 	
 	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.BLACK;
 	private static final IColorConstant STATE_FOREGROUND = IColorConstant.GREEN;
 	private static final IColorConstant STATE_BACKGROUND = IColorConstant.ORANGE;
 	
-	public AddButtonBoxFeature(IFeatureProvider fp) {
+	public AddMenuitemBoxFeature(IFeatureProvider fp) {
 		super(fp);
 	}
 	
 	@Override
 	public boolean canAdd(IAddContext context) {
-		if (context.getNewObject() instanceof ButtonBox) {
+		if (context.getNewObject() instanceof MenuitemBox) {
 			Widget widget = (Widget)context.getNewObject();
 			if (context.getTargetContainer() instanceof Diagram == false) {
 				System.out.println("square: "+widget.getSquare());
@@ -47,7 +46,7 @@ public class AddButtonBoxFeature extends AbstractAddFeature {
 
 	@Override
 	public PictogramElement add(IAddContext context) {
-		ButtonBox addedState = (ButtonBox) context.getNewObject();
+		MenuitemBox addedState = (MenuitemBox) context.getNewObject();
 		ContainerShape targetDiagram = (ContainerShape) context.getTargetContainer();
 
 		// CONTAINER SHAPE WITH ROUNDED RECTANGLE
@@ -100,8 +99,6 @@ public class AddButtonBoxFeature extends AbstractAddFeature {
 	        directEditingInfo.setPictogramElement(shape);
 	        directEditingInfo.setGraphicsAlgorithm(text);
 		}
-		
-		
 		
 		if (addedState.eResource() == null) {
 			WebsiteModelUtil.INSTANCE.addWidget(addedState);

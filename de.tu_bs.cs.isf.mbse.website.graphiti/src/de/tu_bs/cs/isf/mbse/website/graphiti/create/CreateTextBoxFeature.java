@@ -9,9 +9,9 @@ import org.eclipse.graphiti.features.impl.AbstractCreateFeature;
 import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
-import org.eclipse.graphiti.mm.pictograms.Diagram;
+
 import de.tu_bs.cs.isf.mbse.website.Square;
-import de.tu_bs.cs.isf.mbse.website.Board;
+
 import de.tu_bs.cs.isf.mbse.website.Color;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
@@ -39,7 +39,7 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     public Object[] create(ICreateContext context) {
     	
     	// Get the target square
-		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
+		//Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
 
 		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
 		AnchorContainer parent = anchor.getParent();
@@ -49,8 +49,8 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
         
         newState.setContent("Write your content here.");
 
-        newState.setColumn(obj.getOffsetX());
-        newState.setRow(obj.getOffsetY());
+        newState.setColumn(obj.getOffsetX()+1);
+        newState.setRow(obj.getOffsetY()+1);
         getDiagram().eResource().getContents().add(newState);
         
         

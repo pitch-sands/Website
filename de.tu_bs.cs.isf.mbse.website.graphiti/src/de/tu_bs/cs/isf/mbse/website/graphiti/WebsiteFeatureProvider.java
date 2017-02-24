@@ -21,25 +21,32 @@ import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyLayoutDiagramFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyOpenFileFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.features.MyRenameEClassFeature;
-
+import de.tu_bs.cs.isf.mbse.website.graphiti.move.WidgetMoveFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateBoardFeature;
 import de.tu_bs.cs.isf.mbse.website.Board;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddBoardFeature;
 import de.tu_bs.cs.isf.mbse.website.ButtonBox;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
 import de.tu_bs.cs.isf.mbse.website.SearchBox;
 import de.tu_bs.cs.isf.mbse.website.TextBox;
 import de.tu_bs.cs.isf.mbse.website.Widget;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddButtonBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddImageBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddMenuitemBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddSearchBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.add.AddTextBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateButtonBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateImageBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateMenuItemBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateSearchBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.create.CreateTextBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.directediting.DirectEditingButtonBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.directediting.DirectEditingMenuitemBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.directediting.DirectEditingTextBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateButtonBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateImageBoxFeature;
+import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateMenuitemBoxFeature;
 import de.tu_bs.cs.isf.mbse.website.graphiti.update.UpdateTextBoxFeature;
 
 public class WebsiteFeatureProvider extends DefaultFeatureProvider {
@@ -65,6 +72,9 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		else if (context.getNewObject() instanceof Board) {
 			return new AddBoardFeature(this);
 		}
+		else if (context.getNewObject() instanceof MenuitemBox) {
+			return new AddMenuitemBoxFeature(this);
+		}
 		return super.getAddFeature(context);
 	}
 
@@ -74,7 +84,7 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		return new ICreateFeature[] { new CreateTextBoxFeature(this),
 				new CreateSearchBoxFeature(this),
 				new CreateButtonBoxFeature(this),
-				new CreateImageBoxFeature(this),new CreateBoardFeature(this)};
+				new CreateImageBoxFeature(this),new CreateBoardFeature(this),new CreateMenuItemBoxFeature(this)};
 		
 	}
 	
@@ -91,6 +101,12 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 		    if (bo instanceof TextBox) {
 		        return new DirectEditingTextBoxFeature(this);
 		    }
+		    else if (bo instanceof ButtonBox) {
+		        return new DirectEditingButtonBoxFeature(this);
+		    }
+		    else if (bo instanceof MenuitemBox) {
+		        return new DirectEditingMenuitemBoxFeature(this);
+		    }
 		    return super.getDirectEditingFeature(context);
 		}
 	
@@ -102,8 +118,14 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 	       if (bo instanceof TextBox) {
 	           return new UpdateTextBoxFeature(this);
 	       }
-	       if (bo instanceof ImageBox) {
+	       else if (bo instanceof ImageBox) {
 	           return new UpdateImageBoxFeature(this);
+	       }
+	       else if (bo instanceof ButtonBox) {
+	           return new UpdateButtonBoxFeature(this);
+	       }
+	       else if (bo instanceof MenuitemBox) {
+	           return new UpdateMenuitemBoxFeature(this);
 	       }
 	   }
 	   return super.getUpdateFeature(context);
@@ -116,14 +138,14 @@ public class WebsiteFeatureProvider extends DefaultFeatureProvider {
 	    							  new MyLayoutDiagramFeature(this)};
 	}
 	
-	//@Override
-	//public IMoveShapeFeature getMoveShapeFeature(IMoveShapeContext context) {
-	 //   Shape shape = context.getShape();
-	//    Object bo = getBusinessObjectForPictogramElement(shape);
-	//    if (bo instanceof Widget) {
-	//        return new MoveWidgetFeature(this);
-	  //  }
-	  //  return super.getMoveShapeFeature(context);
-	//}
+	@Override
+	public IMoveShapeFeature getMoveShapeFeature(IMoveShapeContext context) {
+	    Shape shape = context.getShape();
+	    Object bo = getBusinessObjectForPictogramElement(shape);
+	    if (bo instanceof Widget) {
+	        return new WidgetMoveFeature(this);
+	    }
+	    return super.getMoveShapeFeature(context);
+	}
 
 }

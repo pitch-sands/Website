@@ -8,7 +8,10 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
 import org.eclipse.graphiti.examples.common.ExampleUtil;
 
+import de.tu_bs.cs.isf.mbse.website.ButtonBox;
 import de.tu_bs.cs.isf.mbse.website.ImageBox;
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
+import de.tu_bs.cs.isf.mbse.website.Widget;
 
 public class MyRenameEClassFeature extends AbstractCustomFeature {
 	 
@@ -20,12 +23,12 @@ public class MyRenameEClassFeature extends AbstractCustomFeature {
  
     @Override
     public String getName() {
-        return "Rename EClass";
+        return "Input Link";
     }
  
     @Override
     public String getDescription() {
-        return "Change the name of the EClass";
+        return "Input the link";
     }
  
     @Override
@@ -36,7 +39,7 @@ public class MyRenameEClassFeature extends AbstractCustomFeature {
         PictogramElement[] pes = context.getPictogramElements();
         if (pes != null && pes.length == 1) {
             Object bo = getBusinessObjectForPictogramElement(pes[0]);
-            if (bo instanceof ImageBox) {
+            if (bo instanceof ButtonBox || bo instanceof MenuitemBox) {
                 ret = true;
             }
         }
@@ -48,15 +51,27 @@ public class MyRenameEClassFeature extends AbstractCustomFeature {
         PictogramElement[] pes = context.getPictogramElements();
         if (pes != null && pes.length == 1) {
             Object bo = getBusinessObjectForPictogramElement(pes[0]);
-            if (bo instanceof ImageBox) {
-            	ImageBox eClass = (ImageBox) bo;
-                String currentName = eClass.getName();
+            if (bo instanceof ButtonBox ) {
+            	ButtonBox eClass = (ButtonBox) bo;
+                String currentName = eClass.getLink();
                 // ask user for a new class name
                 String newName = ExampleUtil.askString(getName(), getDescription(),
                         currentName);
                 if (newName != null && !newName.equals(currentName)) {
                     this.hasDoneChanges = true;
-                    eClass.setName(newName);
+                    eClass.setLink(newName);
+                    updatePictogramElement(pes[0]);
+                }
+            }
+            else if(bo instanceof MenuitemBox) {
+            	MenuitemBox eClass = (MenuitemBox) bo;
+                String currentName = eClass.getLink();
+                // ask user for a new class name
+                String newName = ExampleUtil.askString(getName(), getDescription(),
+                        currentName);
+                if (newName != null && !newName.equals(currentName)) {
+                    this.hasDoneChanges = true;
+                    eClass.setLink(newName);
                     updatePictogramElement(pes[0]);
                 }
             }

@@ -1,28 +1,20 @@
 package de.tu_bs.cs.isf.mbse.website.graphiti.create;
 
 import de.tu_bs.cs.isf.mbse.website.Square;
-import de.tu_bs.cs.isf.mbse.website.TextBox;
-import de.tu_bs.cs.isf.mbse.website.Board;
+
 import de.tu_bs.cs.isf.mbse.website.Color;
 
-import java.util.List;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
-import org.eclipse.graphiti.features.IMoveShapeFeature;
+
 import org.eclipse.graphiti.features.context.ICreateContext;
-import org.eclipse.graphiti.features.context.impl.AddContext;
+
 import org.eclipse.graphiti.features.impl.AbstractCreateFeature;
 import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.AnchorContainer;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
-import org.eclipse.graphiti.mm.pictograms.Diagram;
-import org.eclipse.graphiti.mm.pictograms.PictogramElement;
-import org.eclipse.graphiti.services.Graphiti;
 
-import org.eclipse.graphiti.features.IFeatureProvider;
-import org.eclipse.graphiti.features.context.ICreateContext;
-import org.eclipse.graphiti.features.impl.AbstractCreateFeature;
-import org.eclipse.graphiti.mm.pictograms.Diagram;
+
 
 import de.tu_bs.cs.isf.mbse.website.WebsiteFactory;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
@@ -54,7 +46,7 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 
 
 		// Get the target square
-		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
+		//Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
 
 		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
 		AnchorContainer parent = anchor.getParent();
@@ -62,8 +54,8 @@ public class CreateImageBoxFeature extends AbstractCreateFeature {
 	
 		ImageBox newimage= WebsiteFactory.eINSTANCE.createImageBox();
 
-		newimage.setColumn(obj.getOffsetX());
-		newimage.setRow(obj.getOffsetY());
+		newimage.setColumn(obj.getOffsetX()+1);
+		newimage.setRow(obj.getOffsetY()+1);
 
 		newimage.setName("Image");
 		/*

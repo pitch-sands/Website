@@ -2,7 +2,6 @@ package de.tu_bs.cs.isf.mbse.website.graphiti.update;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.IReason;
-
 import org.eclipse.graphiti.features.context.IUpdateContext;
 import org.eclipse.graphiti.features.impl.AbstractUpdateFeature;
 import org.eclipse.graphiti.features.impl.Reason;
@@ -11,12 +10,11 @@ import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
-import de.tu_bs.cs.isf.mbse.website.ImageBox;
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
 import de.tu_bs.cs.isf.mbse.website.graphiti.model.WebsiteModelUtil;
 
-public class UpdateImageBoxFeature extends AbstractUpdateFeature {
-	
-	public UpdateImageBoxFeature(IFeatureProvider fp) {
+public class UpdateMenuitemBoxFeature extends AbstractUpdateFeature {
+	public UpdateMenuitemBoxFeature(IFeatureProvider fp) {
         super(fp);
     }
  
@@ -24,7 +22,7 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
         // return true, if linked business object is a EClass
         Object bo =
             getBusinessObjectForPictogramElement(context.getPictogramElement());
-        return (bo instanceof ImageBox);
+        return (bo instanceof MenuitemBox);
     }
  
     public IReason updateNeeded(IUpdateContext context) {
@@ -37,6 +35,7 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
                 if (shape.getGraphicsAlgorithm() instanceof Text) {
                     Text text = (Text) shape.getGraphicsAlgorithm();
                     pictogramName = text.getValue();
+                              
                 }
             }
         }
@@ -44,9 +43,10 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
         // retrieve name from business model
         String businessName = null;
         Object bo = getBusinessObjectForPictogramElement(pictogramElement);
-        if (bo instanceof ImageBox) {
-        	ImageBox eClass = (ImageBox) bo;
-            businessName = eClass.getName();
+        if (bo instanceof MenuitemBox) {
+        	MenuitemBox eClass = (MenuitemBox) bo;
+            businessName = eClass.getContent();
+            
         }
  
         // update needed, if names are different
@@ -54,7 +54,7 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
             ((pictogramName == null && businessName != null) || 
                 (pictogramName != null && !pictogramName.equals(businessName)));
         if (updateNameNeeded) {
-            return Reason.createTrueReason("Name is out of date");
+            return Reason.createTrueReason("Content is out of date");
         } else {
             return Reason.createFalseReason();
         }
@@ -65,9 +65,9 @@ public class UpdateImageBoxFeature extends AbstractUpdateFeature {
         String businessName = null;
         PictogramElement pictogramElement = context.getPictogramElement();
         Object bo = getBusinessObjectForPictogramElement(pictogramElement);
-        if (bo instanceof ImageBox) {
-        	ImageBox eClass = (ImageBox) bo;
-            businessName = eClass.getName();
+        if (bo instanceof MenuitemBox) {
+        	MenuitemBox eClass = (MenuitemBox) bo;
+            businessName = eClass.getContent();
             WebsiteModelUtil.INSTANCE.updateWidget();
         }
  
