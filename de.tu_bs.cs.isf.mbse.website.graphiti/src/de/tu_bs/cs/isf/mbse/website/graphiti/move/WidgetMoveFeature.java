@@ -1,6 +1,8 @@
 package de.tu_bs.cs.isf.mbse.website.graphiti.move;
 
 
+import de.tu_bs.cs.isf.mbse.website.Color;
+import de.tu_bs.cs.isf.mbse.website.MenuitemBox;
 import de.tu_bs.cs.isf.mbse.website.Square;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
@@ -28,19 +30,29 @@ public class WidgetMoveFeature extends DefaultMoveShapeFeature{
 		
 		
 		// Find the source and target squares
-				//Square sourceSquare = (Square) getBusinessObjectForPictogramElement(context.getSourceContainer());
-				Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());
-				//Square targetSquare;
-				if (targetBO instanceof Square) {
-					((Widget)bo).setColumn(((Square) targetBO).getOffsetX()+1);
-					((Widget)bo).setRow(((Square) targetBO).getOffsetY()+1);
-					WebsiteModelUtil.INSTANCE.updateWidget();
-					return true;
-				}else {
-					// Not allowed to drop onto anything else than squares and pieces
+		//Square sourceSquare = (Square) getBusinessObjectForPictogramElement(context.getSourceContainer());
+		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());
+		//Square targetSquare;
+		if (targetBO instanceof Square) {
+			if(bo instanceof MenuitemBox){
+				if(((Square) targetBO).getColor()==Color.WHITE){
 					return false;
 				}
-		}	
+			}
+			else{
+				if(((Square) targetBO).getColor()==Color.BLUE){
+					return false;
+			}
+				
+			((Widget)bo).setColumn(((Square) targetBO).getOffsetX()+1);
+			((Widget)bo).setRow(((Square) targetBO).getOffsetY()+1);
+
+			WebsiteModelUtil.INSTANCE.updateWidget();
+			
+			}
+		}
+		return true;
+	}	
 	
 	protected void preMoveShape(IMoveShapeContext context) {
 		// We need an instance of MoveShapeContext (and can be sure to have it)
