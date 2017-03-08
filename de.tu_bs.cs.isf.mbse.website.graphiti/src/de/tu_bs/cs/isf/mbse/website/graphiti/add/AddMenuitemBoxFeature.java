@@ -34,10 +34,8 @@ public class AddMenuitemBoxFeature extends AbstractAddFeature {
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof MenuitemBox) {
 			Widget widget = (Widget)context.getNewObject();
-			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println("square: "+widget.getSquare());
-				// Add new board only in case of an empty diagram
-				return context.getTargetContainer().getChildren().size() == 0;
+			if (context.getTargetContainer() instanceof ContainerShape) {
+				return true;
 			}
 		}
 		

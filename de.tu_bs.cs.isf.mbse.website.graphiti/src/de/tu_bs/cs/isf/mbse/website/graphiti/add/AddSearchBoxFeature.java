@@ -24,7 +24,7 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 	
 	private static final IColorConstant STATE_TEXT_FOREGROUND = IColorConstant.BLACK;
 	private static final IColorConstant STATE_FOREGROUND = IColorConstant.GREEN;
-	private static final IColorConstant STATE_BACKGROUND = IColorConstant.ORANGE;
+	private static final IColorConstant STATE_BACKGROUND = IColorConstant.YELLOW;
 	
 	public AddSearchBoxFeature(IFeatureProvider fp) {
 		super(fp);
@@ -33,11 +33,12 @@ public class AddSearchBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof SearchBox) {
-			Widget widget = (Widget)context.getNewObject();
-			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println("square: "+widget.getSquare());
+			//Widget widget = (Widget)context.getNewObject();
+			if (context.getTargetContainer() instanceof ContainerShape) {
+				//System.out.println("square: "+widget.getSquare());
 				// Add new board only in case of an empty diagram
-				return context.getTargetContainer().getChildren().size() == 0;
+				//return context.getTargetContainer().getChildren().size() == 0;
+				return true;
 			}
 		}
 		

@@ -1,0 +1,125 @@
+[% var website = Website.allInstances().at(0); %]
+<html>
+	<head>
+		<title>
+		[% if (website.getName() == null) { %]
+			Some Tile
+		[% } else { %]
+			[%= website.getName() %]
+		[% } %]
+		</title>
+		<link rel="stylesheet" href="webpage.css">
+	</head>
+	<body>
+		<div id="container">
+			<div id="banner">
+				<img src="CustomBanner.png">
+			</div><br>
+			<div id="menu">
+				[% var hasMenuItems = false; 
+				for (widget in website.widgets) {
+					var type = widget.type.name;
+					if (type == "MenuitemBox") {
+						hasMenuItems = true;
+					}
+				}
+				if (hasMenuItems == true) { %]
+				<ul>
+					[% for (widget in website.widgets.sortBy(widget|widget.column)) {
+						var type = widget.type.name;
+						if (type == "MenuitemBox"){
+							var content = widget.getContent();
+							var link = widget.getLink(); %]
+							<li><a href="[%= link %]">[%= content %]</a></li>
+						[% }
+					} %]
+				</ul>	
+				[% } else { %]
+				Some menu items
+				[% } %]
+			</div><br>
+			<div id="content">
+			[% var previous = null; 
+			var next = null; 
+			for (widget in website.widgets.sortBy(widget|widget.column).sortBy(widget|widget.row)) {
+				var type = widget.type.name;
+				var name = widget.getName();
+				var row = widget.getRow();
+				var column = widget.getColumn();
+				var items = 1;
+				for (other in website.widgets) {
+					if (other.row == widget.row and other.column > widget.column) {
+						next = other;
+					}
+					if (widget <> other and row == other.row) {
+						items = items + 1;
+					}
+				} 
+				var width = (100 / items) - 0.5;
+				if (next <> null and previous == null) { %]
+				<div id="wrapper">
+				[% }
+				if (type == "ImageBox") { 
+					var source = widget.getSource(); 
+					if (name <> null) { %]
+					<div id="image" class="[%= name %]" style="width: [%= width %]%;">
+					[% } else { %]
+					<div id="image" style="width: [%= width %]%;">						
+					[% } %]
+						<img src="file://[%= source %]">
+					</div>
+				[% } %] [* Ende von if (type == "ImageBox") *]
+				[% else if (type == "TextBox") {
+					var content = widget.getContent(); 
+					if (name <> null) { %]
+					<div id="text" class="[%= name %]" style="width: [%= width %]%;">
+					[% } else { %]
+					<div id="text" style="width: [%= width %]%;">
+					[% } %]
+						<p>[%= content %]</p>
+					</div>
+				[% } %] [* Ende von if (type == "TextBox") *]
+				[% else if (type == "SearchBox") { 
+					if (name <> null) { %]
+					<div id="sbox" class="[%= name %]" style="width: [%= width %]%;">
+					[% } else { %]
+					<div id="sbox" style="width: [%= width %]%;">
+					[% } %]
+						<form id="search">
+							<input type="search" placeholder="Search">
+							<input type="submit" value="Search">
+						</form>
+					</div>
+				[% } %] [* Ende von type = SearchBox *]
+				[% else if (type == "ButtonBox") { 
+					var text = widget.getContent();
+					var link = widget.getLink(); 
+					if (name <> null) { %]
+					<div id="button" class="[%= name %]" style="width: [%= width %]%;">
+					[% } else { %]
+					<div id="button" style="width: [%= width %]%;">
+					[% } 
+						if (link == null) { %]
+						<form>
+						[% } else { %]
+						<form action="[%= link %]">
+						[% } %]
+    						<input type="submit" value="[%= text %]" />
+						</form>
+					</div>
+				[% } %] [* Ende von type = ButtonBox *]
+				[% if (next == null and previous <> null) { %]
+				</div>
+				[% }
+				if (next == null){
+					previous = null; %]
+					<br><br> 
+				[% } else {
+					previous = widget;
+				}
+				next = null;
+			} %] [* Ende der ForEach Widget Schleife *]
+			</div>
+		</div>
+	</body>
+</html>	

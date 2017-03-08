@@ -34,7 +34,7 @@ public class WebsiteModelUtil {
 		//IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TestProject");		
 		//IFile java_file = project.getFile(new Path("/java_file.txt"));
 		//IDE.openEditor(page, java_file);            
-	private final String PATH = "/Users/Jingjing/Desktop/ws2017.website";
+	private final String PATH = "/Users/cwp/Desktop/ws2017.website";
 	
 	public static WebsiteModelUtil INSTANCE = new WebsiteModelUtil();
 	

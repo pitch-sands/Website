@@ -39,11 +39,12 @@ public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof TextBox) {
-			Widget widget = (Widget)context.getNewObject();
-			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println("square: "+widget.getSquare());
-				// Add new board only in case of an empty diagram
-				return context.getTargetContainer().getChildren().size() == 0;
+			//Widget widget = (Widget)context.getNewObject();
+			if (context.getTargetContainer() instanceof ContainerShape) {
+				//System.out.println("childrennimei"+context.getTargetContainer().getChildren());
+				//return context.getTargetContainer().getChildren().size() == 0;
+				return true;
+				
 			}
 		}
 		
@@ -92,7 +93,7 @@ public class AddTextBoxFeature extends AbstractAddShapeFeature  {
 			text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER ); 
 			// vertical alignment has as default value "center"
 			text.setFont(gaService.manageDefaultFont(getDiagram(), false, true));
-			gaService.setLocationAndSize(text, 0, 0, width, 20);
+			gaService.setLocationAndSize(text, 0, 0, width, 100);
 
 			// create link and wire it
 			link(shape, addedState);

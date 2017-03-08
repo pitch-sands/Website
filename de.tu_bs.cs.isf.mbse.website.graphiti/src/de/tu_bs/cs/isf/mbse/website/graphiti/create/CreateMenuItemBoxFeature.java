@@ -24,8 +24,7 @@ public class CreateMenuItemBoxFeature extends AbstractCreateFeature{
 	public boolean canCreate(ICreateContext context) {
 		//if targetSquare is not black
 				// Add new board only in case of an empty diagram
-				AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
-		    	Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
+		Square targetSquare = (Square) getBusinessObjectForPictogramElement(context.getTargetContainer());
 				if(targetSquare.getColor() == Color.BLUE){
 					return context.getTargetContainer() instanceof ContainerShape;
 				}
@@ -37,9 +36,7 @@ public class CreateMenuItemBoxFeature extends AbstractCreateFeature{
     	// Get the target square
 		//Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
 
-		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
-		AnchorContainer parent = anchor.getParent();
-        Square obj = (Square) getBusinessObjectForPictogramElement(parent);
+    	Square obj = (Square) getBusinessObjectForPictogramElement(context.getTargetContainer());
     	
         MenuitemBox newState= WebsiteFactory.eINSTANCE.createMenuitemBox();
     	newState.setContent("Write your Menuitem name here.");

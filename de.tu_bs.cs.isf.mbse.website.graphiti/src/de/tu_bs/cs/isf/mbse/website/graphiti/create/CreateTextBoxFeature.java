@@ -27,8 +27,10 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     public boolean canCreate(ICreateContext context) {
 		//if targetSquare is not black
 		// Add new board only in case of an empty diagram
-		AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
-    	Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
+		//AnchorContainer parent = context.getTargetContainer().getAnchors().get(0).getParent();
+    	//revise!!!	
+    	//Square targetSquare = (Square) getBusinessObjectForPictogramElement(parent);
+    	Square targetSquare = (Square) getBusinessObjectForPictogramElement(context.getTargetContainer());
 		if(targetSquare.getColor() != Color.BLUE){
 			return context.getTargetContainer() instanceof ContainerShape;
 		}
@@ -40,10 +42,12 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
     	
     	// Get the target square
 		//Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());		
-
-		Anchor anchor = context.getTargetContainer().getAnchors().get(0);
-		AnchorContainer parent = anchor.getParent();
-        Square obj = (Square) getBusinessObjectForPictogramElement(parent);
+    		
+    		//revise!!!
+		//Anchor anchor = context.getTargetContainer().getAnchors().get(0);
+		//AnchorContainer parent = anchor.getParent();
+        //Square obj = (Square) getBusinessObjectForPictogramElement(parent);
+		Square obj = (Square) getBusinessObjectForPictogramElement(context.getTargetContainer());
     	
     	TextBox newState= WebsiteFactory.eINSTANCE.createTextBox();
         
@@ -51,7 +55,7 @@ public class CreateTextBoxFeature extends AbstractCreateFeature {
 
         newState.setColumn(obj.getOffsetX()+1);
         newState.setRow(obj.getOffsetY()+1);
-        getDiagram().eResource().getContents().add(newState);
+       // getDiagram().eResource().getContents().add(newState);
         
         
  

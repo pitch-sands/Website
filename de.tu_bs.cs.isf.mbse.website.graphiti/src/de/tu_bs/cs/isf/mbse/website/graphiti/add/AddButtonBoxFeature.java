@@ -34,11 +34,11 @@ public class AddButtonBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof ButtonBox) {
-			Widget widget = (Widget)context.getNewObject();
-			if (context.getTargetContainer() instanceof Diagram == false) {
-				System.out.println("square: "+widget.getSquare());
+			//Widget widget = (Widget)context.getNewObject();
+			if (context.getTargetContainer() instanceof ContainerShape) {
+				//System.out.println("square: "+widget.getSquare());
 				// Add new board only in case of an empty diagram
-				return context.getTargetContainer().getChildren().size() == 0;
+				return true;
 			}
 		}
 		

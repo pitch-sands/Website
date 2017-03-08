@@ -33,13 +33,22 @@ public class WidgetMoveFeature extends DefaultMoveShapeFeature{
 		//Square sourceSquare = (Square) getBusinessObjectForPictogramElement(context.getSourceContainer());
 		Object targetBO = getBusinessObjectForPictogramElement(context.getTargetContainer());
 		//Square targetSquare;
+		
 		if (targetBO instanceof Square) {
 			if(bo instanceof MenuitemBox){
 				if(((Square) targetBO).getColor()==Color.WHITE){
 					return false;
 				}
+				else{
+					((Widget)bo).setColumn(((Square) targetBO).getOffsetX()+1);
+					((Widget)bo).setRow(((Square) targetBO).getOffsetY()+1);
+
+					WebsiteModelUtil.INSTANCE.updateWidget();
+					return true;
+					
+				}
 			}
-			else{
+			else {
 				if(((Square) targetBO).getColor()==Color.BLUE){
 					return false;
 			}
@@ -48,10 +57,11 @@ public class WidgetMoveFeature extends DefaultMoveShapeFeature{
 			((Widget)bo).setRow(((Square) targetBO).getOffsetY()+1);
 
 			WebsiteModelUtil.INSTANCE.updateWidget();
-			
+			return true;
 			}
 		}
-		return true;
+		return false;
+		
 	}	
 	
 	protected void preMoveShape(IMoveShapeContext context) {

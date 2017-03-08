@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:website="https://tu-bs.de/isf/website">
+  <website:Website>
+    <widgets xsi:type="website:ImageBox" name="Image" row="3"/>
+    <widgets xsi:type="website:ImageBox" name="This_1" row="1" column="1" source="https://addons.cdn.mozilla.net/user-media/addon_icons/351/351740-64.png?modified=1485814821"/>
+    <widgets xsi:type="website:ImageBox" name="This_2" row="5" source="https://addons.cdn.mozilla.net/user-media/addon_icons/351/351740-64.png?modified=1485814821"/>
+    <widgets xsi:type="website:ImageBox" name="This_3" row="7" source="https://addons.cdn.mozilla.net/user-media/addon_icons/351/351740-64.png?modified=1485814821"/>
+    <widgets xsi:type="website:TextBox" row="1" column="2" content="hallo_text"/>
+    <widgets xsi:type="website:SearchBox" row="4"/>
+    <widgets xsi:type="website:ButtonBox" row="6" content="Button1"/>
+    <widgets xsi:type="website:ButtonBox" row="8" column="2" content="Button2"/>
+    <widgets xsi:type="website:SearchBox" row="8" column="1"/>
+  </website:Website>
+  <website:Website/>
+</xmi:XMI>

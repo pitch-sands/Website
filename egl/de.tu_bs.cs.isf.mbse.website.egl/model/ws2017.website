@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<website:Website xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:website="https://tu-bs.de/isf/website">
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="1" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw001.jpg"/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="1" content="Write your Menuitem name here."/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="2" content="Write your Menuitem name here."/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="2" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw004.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="3" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw005.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="4" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw006.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="3" column="1" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw007.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="3" column="2" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw009.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="3" column="3" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw042.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="4" column="1" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw040.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="4" column="2" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw044.jpg"/>
+  <widgets xsi:type="website:SearchBox" row="5" column="1"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="6" column="1" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw053.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="1" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw001.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="2" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw004.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="3" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw005.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="4" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw006.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="5" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw007.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="6" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw042.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="7" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw044.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="7" column="8" source="C:\Users\Antonio\Documents\Guild Wars 2\Screens\gw049.jpg"/>
+</website:Website>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<website:Website xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:website="https://tu-bs.de/isf/website">
+  <widgets xsi:type="website:MenuitemBox" row="1" column="1" content="MenuItem1" link="http://www.nishisb.sb"/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="2" content="MenuItem2"/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="3" content="MenuItem3"/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="4" content="MenuItem4"/>
+  <widgets xsi:type="website:MenuitemBox" row="1" column="5" content="MenuItem5"/>
+  <widgets xsi:type="website:TextBox" row="2" column="1" content="today"/>
+  <widgets xsi:type="website:TextBox" row="2" column="2" content="is"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="3" source="C:/Users/Antonio/Documents/Guild Wars 2/Screens/gw015.jpg"/>
+  <widgets xsi:type="website:ImageBox" name="Image" row="2" column="4" source="C:/Users/Antonio/Documents/Guild Wars 2/Screens/gw015.jpg"/>
+  <widgets xsi:type="website:ButtonBox" row="2" column="5" content="tashisb" link="http://www.tashisb.sb"/>
+  <widgets xsi:type="website:TextBox" row="3" column="2" content="friday"/>
+  <widgets xsi:type="website:TextBox" row="3" column="3" content="so happy"/>
+  <widgets xsi:type="website:SearchBox" row="3" column="4"/>
+  <widgets xsi:type="website:ButtonBox" row="3" column="5" content="doushisb" link="http://www.doushisb.sb"/>
+</website:Website>

@@ -48,8 +48,8 @@ public class AddImageBoxFeature extends AbstractAddFeature {
 	@Override
 	public boolean canAdd(IAddContext context) {
 		if (context.getNewObject() instanceof ImageBox) {
-			if (context.getTargetContainer() instanceof Diagram == false) {	
-				return context.getTargetContainer().getChildren().size() == 0;
+			if (context.getTargetContainer() instanceof ContainerShape) {	
+				return true;
 			}
 		}
 		return false;
